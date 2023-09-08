@@ -1,0 +1,46 @@
+.catalog,
+.card,
+.card * {
+    /*border: 1px solid #f00;*/
+}
+
+.group.catalog {
+    align-items: flex-start;
+    justify-content: center;
+}
+.group .card, .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px 1px #4f483f;
+}
+.card > * {
+    display: block;
+    padding: 5px 10px;
+}
+.card a {
+    text-decoration: none;
+}
+.card .head {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.card img {
+    margin: 10px auto;
+    padding: 0;
+}
+.card > p {
+    text-align: justify;
+    text-align-last: left;
+    margin: 0;
+}
+@media (orientation: portrait), (max-width: 768px) {
+    .group .card, .card {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+    }
+}
