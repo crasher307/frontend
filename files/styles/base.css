@@ -23,7 +23,7 @@ input, select, textarea, button {
 @font-face { font-family: PT;   src: url("../fonts/pt-sans-bold.ttf")           format("truetype"); font-weight: bold;      font-style: normal; }
 @font-face { font-family: PT;   src: url("../fonts/pt-sans-italic.ttf")         format("truetype"); font-weight: normal;    font-style: italic; }
 @font-face { font-family: PT;   src: url("../fonts/pt-sans-bold-italic.ttf")    format("truetype"); font-weight: bold;      font-style: italic; }
-/*** Selected *******************************/
+/*** Selection ******************************/
 ::selection {
     background:     #6c5f4d;
     color:          #fff;
@@ -34,33 +34,33 @@ input, select, textarea, button {
 }
 /*** ScrollBar ******************************/
 ::-webkit-scrollbar {
-    background:     #eee;
     width:          10px;
     height:         10px;
+    background:     #eee;
 }
 ::-webkit-scrollbar-thumb {
     background:     #bbb;
 }
 /*** Body ***********************************/
 body {
-    background:     #333;
-    color:          #eee;
     min-width:      400px;
     font-family:    PT, sans-serif;
     font-size:      16px;
     text-align:     left;
+    background:     #333;
+    color:          #eee;
 }
 /*** Div ************************************/
 div {
     display:        block;
     position:       relative;
-    color:          inherit;
     font-family:    inherit;
     overflow:       hidden;
     word-wrap:      normal;
     word-break:     normal;
     white-space:    normal;
     hyphens:        manual;
+    color:          inherit;
 }
 /*** P **************************************/
 p {
@@ -74,21 +74,21 @@ img {
 }
 /*** Line ***********************************/
 hr {
-    background:     linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #4f483f 20%, #998261 80%, rgba(0, 0, 0, 0) 100%);
     height:         1px;
     margin:         5px auto 4px;
     clear:          both;
+    background:     linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #4f483f 20%, #998261 80%, rgba(0, 0, 0, 0) 100%);
 }
 /*** Table **********************************/
 table {
-    background:     rgba(0, 0, 0, 0.1);
     border-spacing: 1px;
     width:          calc(100% - 2px);
     margin:         1px;
+    background:     rgba(0, 0, 0, 0.1);
 }
 td {
-    background:     #fff;
     padding:        2px 10px;
+    background:     #fff;
 }
 /*** H **************************************/
 h1, h2, h3, h4, h5, h6 {
@@ -113,23 +113,19 @@ button {
     padding:        5px 10px;
     min-width:      200px;
     border-radius:  5px;
+    background:     rgba(255, 255, 255, 0.9);
+    color:          #4f483f;
 }
 select,
 textarea {
     padding:        4px 6px;
 }
-input,
-select,
-textarea {
-    background:     rgba(255, 255, 255, 0.9);
-    color:          #4f483f;
-}
 input[type=button], input[type=submit], input[type=reset],
 button {
     transition:     all 0.3s ease-in-out;
+    cursor:         pointer;
     background:     #7c694f;
     color:          #eee;
-    cursor:         pointer;
 }
 input[type=reset],
 button[type=reset] {
@@ -160,159 +156,27 @@ textarea::-webkit-scrollbar-thumb {
 }
 textarea::-webkit-resizer,
 textarea::-webkit-scrollbar-corner {
-    background:     #7c694f;
     border-radius:  0;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-right-radius: inherit;
+    background:     #7c694f;
 }
 /* <!-- </editor-folder--> */
 /*** Link ***********************************/
 /* <!-- <editor-folder Link> --> */
 a, a:hover, a:focus {
-    color:          inherit;
     cursor:         pointer;
+    color:          inherit;
 }
 a {
     transition:     all 0.3s ease-in-out;
-    color:          #9d8563;
     text-decoration:underline #9d8563;
+    color:          #9d8563;
 }
 @media print {
     a[href^=http]:after {       content:        " (url:" attr(href) ")";    }
     a[href^="\/\/"]:after {     content:        " (url:" attr(href) ")";    }
     a[href^="#"]:after {        content:        "";                         }
-}
-/* <!-- </editor-folder--> */
-/*** Site settings ***************************************************************************/
-/* <!-- <editor-folder Site settings> --> */
-header,
-main,
-footer {
-    box-sizing:     border-box;
-    display:        block;
-    position:       static;
-    color:          inherit;
-    border:         none;
-    border-radius:  0;
-    width:          100%;
-    height:         auto;
-    margin:         0 auto;
-    padding:        7px 20px;
-    z-index:        1;
-    overflow:       hidden;
-}
-/*** Head ***********************************/
-header {
-    background:     rgba(0, 0, 0, 0.5);
-    color:          inherit;
-    height:         50px;
-    font-size:      28px;
-    font-weight:    bold;
-}
-header a {
-    transition:     all 0s ease-in-out;
-    color:          inherit;
-    text-decoration:none;
-}
-/*** Content ********************************/
-main {
-    max-width:      1920px;
-    height:         auto;
-    min-height:     calc(100vh - 86px);
-    padding:        20px;
-    font-size:      1em;
-    line-height:    1.6;
-}
-main > .menu {
-    display:        flex;
-    align-items:    center;
-    justify-content:center;
-    min-height:     40px;
-    margin:         -22px 0 22px;
-}
-main > .menu a {
-    display:        block;
-    background:     rgba(0, 0, 0, 0.3);
-    padding:        5px 10px;
-    min-width:      120px;
-    text-align:     center;
-    text-decoration:none;
-}
-main > .menu a[active]:hover,
-main > .menu a[active]:focus {
-    color:          #9d8563;
-}
-main > .menu a:hover,
-main > .menu a:focus,
-main > .menu a[active] {
-    background:     rgba(0, 0, 0, 0.5);
-}
-main > .menu a:first-child {
-    border-radius:  0 0 0 10px;
-}
-main > .menu a:last-child {
-    border-radius:  0 0 10px 0;
-}
-/*** Footer *********************************/
-footer {
-    border-top:     1px dashed rgba(0, 0, 0, 0.5);
-    height:         36px;
-    font-size:      16px;
-}
-footer a {
-    text-decoration:none;
-}
-/* <!-- </editor-folder--> */
-/*** Other **********************************/
-/* <!-- <editor-folder Other> --> */
-.align-left {
-    text-align:     left;
-}
-.justify {
-    text-align:     justify;
-    text-align-last:left;
-}
-.social {
-    display:        flex;
-    align-items:    center;
-    justify-content:center;
-    margin:         20px 0 0;
-}
-.social a {
-    display:        flex;
-    align-items:    center;
-    justify-content:center;
-    width:          40px;
-    height:         40px;
-    margin:         0 5px;
-    border-radius:  50%;
-    overflow:       hidden;
-}
-.social img {
-    width:          120%;
-    height:         120%;
-}
-.group {
-    display:        flex;
-    flex-wrap:      wrap;
-    align-items:    center;
-    justify-content:flex-start;
-    margin:         0 0 1px 0;
-    padding:        0;
-}
-.group > * {
-    margin:         0 1px 0 0;
-    border-radius:  0;
-}
-.group > :first-child {
-    border-radius:  5px 0 0 5px;
-}
-.group > :last-child {
-    border-radius:  0 5px 5px 0;
-    margin:         0;
-}
-.group textarea {
-    height:         30px;
 }
 /* <!-- </editor-folder--> */
 /*** For mobile ******************************************************************************/
@@ -350,59 +214,6 @@ footer a {
     textarea::-webkit-scrollbar-corner {
         /*display:        initial;*/
         border-radius:  10px;
-    }
-    /*** Head ***********************************/
-    header {
-        height:         62px; /* 50 */
-        font-size:      36px; /* 28 */
-    }
-    /*** Content ********************************/
-    main {
-        max-width:      1920px;
-        min-height:     calc(100vh - 110px); /* 100vh - 86px */
-    }
-    main > .menu {
-        display:        block;
-        margin:         -20px 0 20px;
-    }
-    main > .menu a {
-        padding:        5px 20px;
-        min-width:      auto;
-    }
-    main > .menu a:first-child {
-        border-radius: 0;
-    }
-    main > .menu a:last-child {
-        border-radius: 0 0 10px 10px;
-    }
-    /*** Footer *********************************/
-    footer {
-        height:         48px; /* 36 */
-        font-size:      26px; /* 16 */
-    }
-    /*** Other **********************************/
-    .social {
-        margin:         30px 0 0;
-    }
-    .social a {
-        width:          80px;
-        height:         80px;
-    }
-    .form-group {
-        display:        block;
-        margin:         0;
-    }
-    .form-group > *,
-    .form-group > :first-child,
-    .form-group > :last-child {
-        display:        block;
-        margin:         0 0 5px 0;
-        width:          100%;
-        height:         auto;
-        border-radius:  10px;
-    }
-    .form-group textarea {
-        height:         160px;
     }
 }
 /* <!-- </editor-folder--> */

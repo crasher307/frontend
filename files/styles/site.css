@@ -1,0 +1,70 @@
+/*** Site settings ***************************************************************************/
+/* <!-- <editor-folder Site settings> --> */
+header,
+main,
+footer {
+    box-sizing:     border-box;
+    display:        block;
+    position:       static;
+    border:         none;
+    border-radius:  0;
+    width:          100%;
+    height:         auto;
+    margin:         0 auto;
+    padding:        7px 20px;
+    z-index:        1;
+    overflow:       hidden;
+    color:          inherit;
+}
+/*** Head ***********************************/
+header {
+    height:         50px;
+    font-size:      28px;
+    font-weight:    bold;
+    background:     rgba(0, 0, 0, 0.5);
+    color:          inherit;
+}
+header a {
+    transition:     all 0s ease-in-out;
+    text-decoration:none;
+    color:          inherit;
+}
+/*** Content ********************************/
+main {
+    max-width:      1920px;
+    height:         auto;
+    min-height:     calc(100vh - 86px);
+    padding:        20px;
+    font-size:      1em;
+    line-height:    1.6;
+}
+/*** Footer *********************************/
+footer {
+    height:         36px;
+    font-size:      16px;
+    border-top:     1px dashed rgba(0, 0, 0, 0.5);
+}
+footer a {
+    text-decoration:none;
+}
+/* <!-- </editor-folder--> */
+/*** For mobile ******************************************************************************/
+/* <!-- <editor-folder Mobile> --> */
+@media (orientation: portrait), (max-width: 768px) {
+    /*** Head ***********************************/
+    header {
+        height:         62px; /* 50 */
+        font-size:      36px; /* 28 */
+    }
+    /*** Content ********************************/
+    main {
+        max-width:      1920px;
+        min-height:     calc(100vh - 110px); /* 100vh - 86px */
+    }
+    /*** Footer *********************************/
+    footer {
+        height:         48px; /* 36 */
+        font-size:      26px; /* 16 */
+    }
+}
+/* <!-- </editor-folder--> */
