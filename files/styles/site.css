@@ -21,7 +21,7 @@ header {
     padding:        7px 20px;
     font-size:      28px;
     font-weight:    bold;
-    background:     rgba(0, 0, 0, 0.5);
+    background:     #181818;
     color:          inherit;
 }
 header a {
@@ -46,7 +46,7 @@ footer {
     height:         50px;
     padding:        4px 20px;
     font-size:      16px;
-    border-top:     1px dashed rgba(0, 0, 0, 0.5);
+    border-top:     1px dashed #181818;
     color:          #9d8563;
 }
 /* <!-- </editor-folder--> */

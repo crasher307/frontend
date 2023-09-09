@@ -15,7 +15,7 @@ main > .menu a[active]:focus {
     min-width:      120px;
     text-align:     center;
     text-decoration:none;
-    background:     rgba(0, 0, 0, 0.3);
+    background:     #252525;
     color:          #9d8563;
 }
 main > .menu a:hover,
@@ -25,7 +25,7 @@ main > .menu a:focus {
 main > .menu a:hover, main > .menu a[active]:hover,
 main > .menu a:focus, main > .menu a[active]:focus,
 main > .menu a[active] {
-    background:     rgba(0, 0, 0, 0.5);
+    background:     #181818;
 }
 main > .menu a:first-child {
     border-radius:  0 0 0 10px;
@@ -49,7 +49,7 @@ main > .menu a:last-child {
         text-align:     center;
         content:        "Меню";
         cursor:         pointer;
-        background:     rgba(0, 0, 0, 0.3);
+        background:     #252525;
         color:          #9d8563;
     }
     main > .menu:hover,
@@ -58,7 +58,7 @@ main > .menu a:last-child {
     }
     main > .menu:hover:before,
     main > .menu:focus:before {
-        background:     rgba(0, 0, 0, 0.5);
+        background:     #181818;
     }
     main > .menu a {
         padding:        5px 20px;
