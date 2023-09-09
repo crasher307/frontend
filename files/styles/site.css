@@ -11,7 +11,6 @@ footer {
     width:          100%;
     height:         auto;
     margin:         0 auto;
-    padding:        7px 20px;
     z-index:        1;
     overflow:       hidden;
     color:          inherit;
@@ -19,6 +18,7 @@ footer {
 /*** Head ***********************************/
 header {
     height:         50px;
+    padding:        7px 20px;
     font-size:      28px;
     font-weight:    bold;
     background:     rgba(0, 0, 0, 0.5);
@@ -33,19 +33,24 @@ header a {
 main {
     max-width:      1920px;
     height:         auto;
-    min-height:     calc(100vh - 86px);
+    min-height:     calc(100vh - 100px);
     padding:        20px;
     font-size:      1em;
     line-height:    1.6;
 }
 /*** Footer *********************************/
 footer {
-    height:         36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:         50px;
+    padding:        4px 20px;
     font-size:      16px;
     border-top:     1px dashed rgba(0, 0, 0, 0.5);
+    color:          #9d8563;
 }
 footer a {
-    text-decoration:none;
+    /*text-decoration:none;*/
 }
 /* <!-- </editor-folder--> */
 /*** For mobile ******************************************************************************/
@@ -53,18 +58,18 @@ footer a {
 @media (orientation: portrait), (max-width: 768px) {
     /*** Head ***********************************/
     header {
-        height:         62px; /* 50 */
-        font-size:      36px; /* 28 */
+        height:         62px;
+        font-size:      36px;
     }
     /*** Content ********************************/
     main {
         max-width:      1920px;
-        min-height:     calc(100vh - 110px); /* 100vh - 86px */
+        min-height:     calc(100vh - 138px);
     }
     /*** Footer *********************************/
     footer {
-        height:         48px; /* 36 */
-        font-size:      26px; /* 16 */
+        height:         76px;
+        font-size:      26px;
     }
 }
 /* <!-- </editor-folder--> */
