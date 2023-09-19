@@ -106,6 +106,25 @@
   - Все домашние задания являются повторением того что делается на семинаре, поэтому перед выполнением обязательно посмотрите семинар.
 
 </details>
+<details class="desc" data-number="7"><summary>Урок 7. Лекция. Основы позиционирования</summary>
+
+- Свойство display. Flexbox и Grid layout. Позиционирование блоков.
+- [Работа](html_css/lesson_7)
+
+</details>
+<details class="desc" data-number="8"><summary>Урок 8. Семинар. Основы позиционирования (вебинар) [TODO: доделать работу для семинара]</summary>
+
+- Выполнение практических заданий в соответствии с презентацией к уроку
+  - [figma](https://www.figma.com/file/3jcBxpXXVlwvD3bY16lbLW/Landing_Page-(Copy)-(Copy)?node-id=0%3A1&mode=dev) - макет
+  - [caniuse](https://caniuse.com/)
+  - [flex box froggy](https://flexboxfroggy.com/#ru) - тренажер по флексам
+- [Работа](html_css/lesson_8)
+  - Мы продолжаем работать с проектом из прошлого урока [figma](https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=186%3A2)
+  - В данном домашнем задании мы будем добавлять стилистику и позиционирование для верхнего блока сайта
+    - Для всех html-элементов из прошлого урока, вам необходимо задать стили в соответствии с макетом.
+    - Расставить все элементы в соответствии с макетом.
+
+</details>
 
 #### Продвинутый HTML + CSS
 
