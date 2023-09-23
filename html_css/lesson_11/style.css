@@ -103,6 +103,9 @@ header {
     height: 75px;
     background: #222;
 }
+header > div {
+    padding: 0 30px;
+}
 header > div > div {
     display: flex;
     align-items: center;
@@ -242,6 +245,51 @@ main > div:first-child {
     color: #F26376;
     font-size: 16px;
     padding: 15px 39px;
+}
+@media (orientation: portrait), (max-width: 768px) {
+    .promo .card {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .promo .card .name {
+        font-size: 16px;
+    }
+    .promo .card .name span:first-child {
+        font-size: 24px;
+    }
+
+    .offers, .products {
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .offers .card {
+        font-size: 14px;
+    }
+    .offers .card strong {
+        font-size: 16px;
+    }
+
+    .products {
+        justify-items: center;
+        grid-template-columns: 100%;
+        gap: 30px;
+        padding: 20px;
+    }
+    .products .name, .products .card, .products .more {
+        grid-column: 1/1;
+    }
+    .products .card {
+        max-width: 540px;
+        border-top: 1px dashed #00000010;
+        border-radius: 10px;
+        box-shadow: 0 15px 5px 0 #00000020;
+        background: none;
+    }
+    .products .card img {
+        align-self: center;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 5px 0 #00000020;
+    }
 }
 /* <!-- </editor-folder--> */
 /* <!-- </editor-folder--> */
