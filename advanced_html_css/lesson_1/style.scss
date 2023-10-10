@@ -546,11 +546,24 @@ footer {
     }
 
     .add {
-      // TODO остановился здесь
+      padding: 15px 60px;
+      width: auto;
+      border: 1px solid #F26376;
       color: #F26376;
       font-size: 16px;
       font-weight: 400;
       margin-top: 40px;
+      text-transform: none;
+      gap: 20px;
+      cursor: pointer;
+
+      &:before {
+        margin-left: -20px;
+        background: url("./img/icons/basket-color.svg") no-repeat center center / contain;
+        width: 26px;
+        height: 24px;
+        content: "";
+      }
     }
   }
 
