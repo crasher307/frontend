@@ -343,6 +343,7 @@ footer > div {
 .promo > .breadcrumbs .block {
   display: flex;
   justify-content: space-between;
+  margin: 0 20px;
   width: 100%;
   max-width: 1180px;
 }
@@ -454,14 +455,19 @@ footer > div {
   content: "";
 }
 .promo > .desc .params {
+  flex-wrap: wrap;
+  justify-content: center;
   color: #6F6E6E;
   font-weight: 400;
   gap: 20px;
 }
 .promo > .desc .params > * {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  align-self: start;
+  gap: 5px 10px;
 }
 .promo > .desc .params > *:after {
   width: 10px;
@@ -470,7 +476,9 @@ footer > div {
   content: "";
 }
 .promo > .desc .add {
-  padding: 15px 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px 40px;
   width: auto;
   border: 1px solid #F26376;
   color: #F26376;
@@ -478,11 +486,10 @@ footer > div {
   font-weight: 400;
   margin-top: 40px;
   text-transform: none;
-  gap: 20px;
+  gap: 10px 20px;
   cursor: pointer;
 }
 .promo > .desc .add:before {
-  margin-left: -20px;
   background: url("./img/icons/basket-color.svg") no-repeat center center/contain;
   width: 26px;
   height: 24px;
@@ -540,12 +547,13 @@ footer > div {
 .offers > :nth-child(4n) {
   grid-column: 1/4;
 }
-.offers .card > a, .offers .card > div {
+.offers > .card > a, .offers > .card > div {
   display: flex;
   position: absolute;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   background: rgba(33, 22, 22, 0.6980392157);
   color: inherit;
   top: 0;
@@ -553,7 +561,7 @@ footer > div {
   right: 0;
   bottom: 0;
 }
-.offers .card strong {
+.offers > .card strong {
   color: #F16D7F;
   font-size: 24px;
   font-weight: 700;
@@ -573,6 +581,7 @@ footer > div {
   grid-column: 1/4;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin: 20px auto;
   color: #9F9F9F;
   font-size: 14px;
@@ -637,10 +646,11 @@ footer > div {
 }
 .products .more a {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 212px;
-  height: 48px;
+  padding: 15px 40px;
+  width: auto;
   border: 1px solid #F26376;
   color: #F26376;
   font-size: 16px;
@@ -814,6 +824,8 @@ footer > div {
   padding: 18px 0;
 }
 .about .copyright {
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
 }
 .about .social a {
@@ -852,17 +864,28 @@ footer > div {
 }
 
 @media (orientation: portrait) and (max-width: 1024px), (max-width: 768px) {
-  .promo .card {
+  .promo > .desc {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin: 0;
+    max-width: none;
+  }
+  .promo.main > .card {
     grid-template-columns: auto 330px;
   }
-  .promo .card > * {
+  .promo.main > .card > * {
     font-size: 24px;
   }
-  .promo .card > :nth-child(2) {
+  .promo.main > .card > :nth-child(2) {
     font-size: 44px;
   }
   .products {
     grid-template-columns: repeat(2, auto);
+    direction: rtl;
+  }
+  .products.catalog > .card:nth-child(3) {
+    display: none;
   }
   .products > .title, .products > .more {
     grid-column: 1/3;
@@ -892,44 +915,75 @@ footer > div {
   header .icon.profile, header .icon.basket {
     display: none;
   }
-  .promo {
+  .promo > .breadcrumbs .block {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .promo > .desc {
+    padding: 65px 30px;
+  }
+  .promo > .desc .params {
+    font-size: 10px;
+    gap: 10px;
+  }
+  .promo > .desc .params > * {
+    display: flex;
+    align-items: center;
+  }
+  .promo > .desc .params > *:after {
+    width: 10px;
+    height: 5px;
+    background: url("./img/icons/dash-bottom.svg") no-repeat center center/contain;
+    content: "";
+  }
+  .promo.main {
     height: 360px;
   }
-  .promo .card {
+  .promo.main > .card {
     display: flex;
     flex-direction: column;
     width: auto;
   }
-  .promo .card > * {
+  .promo.main > .card > * {
     font-size: 20px;
   }
-  .promo .card > :nth-child(1) {
+  .promo.main > .card > :nth-child(1) {
     display: none;
   }
-  .promo .card > :nth-child(2) {
+  .promo.main > .card > :nth-child(2) {
     font-size: 38px;
   }
-  .promo .card > :nth-child(2), .promo .card > :nth-child(3) {
+  .promo.main > .card > :nth-child(2), .promo.main > .card > :nth-child(3) {
     align-self: start;
   }
   .offers {
     display: flex;
     flex-direction: column;
   }
-  .offers .card {
+  .offers > .card {
     display: flex;
     justify-content: center;
     max-width: 360px;
     width: 100%;
     overflow: hidden;
   }
-  .offers .card img {
+  .offers > .card img {
     width: auto;
     max-width: 180vw;
   }
   .products {
     display: flex;
     flex-direction: column;
+  }
+  .products.catalog > .card:nth-child(2) {
+    display: none;
+  }
+  .products.catalog > .card:nth-child(3) {
+    display: flex;
+  }
+  .products .more a {
+    padding: 15px;
   }
   .subscription > div {
     padding: 60px 0 120px;
