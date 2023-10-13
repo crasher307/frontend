@@ -11,22 +11,22 @@
     <meta name="keywords" content="keywords, ...">
     <!-- icon -->
     <link type="image/x-icon" rel="shortcut icon" href="../../files/images/cat.ico">
-    <!-- styles -->
-    <link type="text/css" rel="stylesheet" href="../../files/styles/base.css">
+    <!-- style -->
+    <link type="text/css" rel="stylesheet" href="../source/clear.css">
     <link type="text/css" rel="stylesheet" href="style.css">
+    <!-- javascript -->
+    <script type="text/javascript" src="../source/shop-config.js" async></script>
 </head>
 <body>
 
 <header>
-    <div class="menu">
-        <a class="icon logo" href="#"></a>
-        <a class="icon search" href="#"></a>
-        <div class="icon menu"><div id="menu"></div></div>
-        <a class="icon profile" href="#"></a>
-        <a class="icon basket" href="#">
-            <span>5</span>
-        </a>
-    </div>
+    <a class="icon logo" href="#"></a>
+    <a class="icon search" href="#"></a>
+    <div class="icon menu" id="menu"></div>
+    <a class="icon profile" href="#"></a>
+    <a class="icon basket" href="#">
+        <div class="icon">5</div>
+    </a>
 </header>
 <main>
     <div class="promo catalog">
@@ -80,80 +80,9 @@
     </div>
 </main>
 <footer>
-    <div class="subscription">
-        <div class="card">
-            <div class="review">
-                <div class="photo"><img src="img/images/girl.png" alt="review-photo"></div>
-                <q>Vestibulum quis porttitor dui! Quisque viverra nunc mi, <i>a pulvinar purus condimentum</i></q>
-            </div>
-            <div class="subscribe">
-                <span><strong>Subscribe</strong>for our newletter and promotion</span>
-                <form action="#" method="post">
-                    <input type="text" placeholder="Enter Your Email">
-                    <input type="submit" value="Subscribe">
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="about">
-        <div class="copyright">
-            © <span id="year">2021</span>  Brand  All Rights Reserved.
-            <script>document.getElementById("year").innerHTML = `2021-${new Date().getFullYear()}`;</script>
-        </div>
-        <div id="social" class="social">
-            <a href="#" class="facebook"></a>
-            <a href="#" class="instagram"></a>
-            <a href="#" class="pinterest"></a>
-            <a href="#" class="twitter"></a>
-        </div>
-    </div>
+    <div id="copyright" class="copyright"></div>
+    <div id="social" class="social"></div>
 </footer>
-
-<script async>
-    const menu = [
-        {
-            name: 'Man',
-            link: '#',
-            sub: [
-                { name: 'Accessories', link: '#' },
-                { name: 'Bags', link: '#' },
-                { name: 'Denim', link: '#' },
-                { name: 'T-Shirts', link: '#' },
-            ],
-        },
-        {
-            name: 'Woman',
-            link: '#',
-            sub: [
-                { name: 'Accessories', link: '#' },
-                { name: 'Jackets & Coats', link: '#' },
-                { name: 'Polos', link: '#' },
-                { name: 'T-Shirts', link: '#' },
-                { name: 'Shirts', link: '#' },
-            ],
-        },
-        {
-            name: 'Kids',
-            link: '#',
-            sub: [
-                { name: 'Accessories', link: '#' },
-                { name: 'Jackets & Coats', link: '#' },
-                { name: 'Polos', link: '#' },
-                { name: 'T-Shirts', link: '#' },
-                { name: 'Shirts', link: '#' },
-                { name: 'Bags', link: '#' },
-            ],
-        },
-    ];
-    document.getElementById('menu').innerHTML = menu.reduce((data, el) => {
-        const links = [`<a class="name" href="${el.link}">${el.name}</a>`];
-        if (el.sub.length > 0) {
-            el.sub.forEach(sub => links.push(`<a href="${sub.link}">${sub.name}</a>`));
-        }
-        data.push(`<div class="cat">${links.join('')}</div>`);
-        return data;
-    }, []).join('');
-</script>
 
 </body>
 </html>
