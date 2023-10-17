@@ -150,14 +150,14 @@ header .icon:nth-child(3) {
   margin: 0 0 0 auto;
 }
 header .icon.logo {
-  background: url("./img/icons/logo.svg") no-repeat center center/contain;
+  background: url("logo-bcp.svg") no-repeat center center/contain;
   width: 44px;
 }
 header .icon.search {
-  background: url("./img/icons/search.svg") no-repeat center center/contain;
+  background: url("../source/icons/search.svg") no-repeat center center/contain;
 }
 header .icon.menu {
-  background: url("./img/icons/menu.svg") no-repeat center center/contain;
+  background: url("../source/icons/menu.svg") no-repeat center center/contain;
   overflow: visible;
 }
 header .icon.menu > div {
@@ -203,10 +203,10 @@ header .icon.menu a {
   color: inherit;
 }
 header .icon.profile {
-  background: url("./img/icons/profile.svg") no-repeat center center/contain;
+  background: url("../source/icons/profile.svg") no-repeat center center/contain;
 }
 header .icon.basket {
-  background: url("./img/icons/basket.svg") no-repeat center center/contain;
+  background: url("../source/icons/basket.svg") no-repeat center center/contain;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -308,11 +308,11 @@ footer > div {
   display: block;
   width: 100%;
   height: 100%;
-  background: url("./img/icons/dash-left.svg") no-repeat center center/contain;
+  background: url("arrow-left.svg") no-repeat center center/contain;
   content: "";
 }
 .promo > .card .icon:hover:before, .promo > .card .icon:focus:before {
-  background: url("./img/icons/dash-right.svg") no-repeat center center/contain;
+  background: url("arrow-right.svg") no-repeat center center/contain;
   transform: rotate(180deg);
 }
 .promo > .card .icon.left {
@@ -399,7 +399,7 @@ footer > div {
 .promo > .desc .params > *:after {
   width: 10px;
   height: 5px;
-  background: url("./img/icons/dash-bottom.svg") no-repeat center center/contain;
+  background: url("arrow-bottom.svg") no-repeat center center/contain;
   content: "";
 }
 .promo > .desc .add {
@@ -417,7 +417,7 @@ footer > div {
   cursor: pointer;
 }
 .promo > .desc .add:before {
-  background: url("./img/icons/basket-color.svg") no-repeat center center/contain;
+  background: url("basket-active.svg") no-repeat center center/contain;
   width: 26px;
   height: 24px;
   content: "";
@@ -547,7 +547,7 @@ footer > div {
   position: absolute;
   justify-content: right;
   align-items: center;
-  background: url("./img/icons/basket.svg") no-repeat 12px center;
+  background: url("../source/icons/basket.svg") no-repeat 12px center;
   padding: 0 12px;
   width: 116px;
   height: 44px;
@@ -615,13 +615,13 @@ footer > div {
   content: "";
 }
 .advantages .delivery:before {
-  background: url("./img/icons/car.svg") no-repeat center/contain;
+  background: url("car-active.svg") no-repeat center/contain;
 }
 .advantages .sales:before {
-  background: url("./img/icons/percent.svg") no-repeat center/contain;
+  background: url("percent-active.svg") no-repeat center/contain;
 }
 .advantages .quality:before {
-  background: url("./img/icons/crown.svg") no-repeat center/contain;
+  background: url("crown-active.svg") no-repeat center/contain;
 }
 
 .subscription {
@@ -638,7 +638,7 @@ footer > div {
   left: 0;
   right: 0;
   bottom: -75%;
-  background: url("./img/images/subsription.png") no-repeat center center/cover;
+  background: url("subsription-back.png") no-repeat center center/cover;
   opacity: 0.3;
   content: "";
 }
@@ -776,17 +776,17 @@ footer > div {
   content: "";
 }
 .about .social a.facebook:before {
-  background: url("./img/social/facebook.svg") no-repeat center/contain;
+  background: url("../source/social/facebook.svg") no-repeat center/contain;
   margin-left: -1px;
 }
 .about .social a.instagram:before {
-  background: url("./img/social/instagram.svg") no-repeat center/contain;
+  background: url("../source/social/instagram.svg") no-repeat center/contain;
 }
 .about .social a.pinterest:before {
-  background: url("./img/social/pinterest.svg") no-repeat center/contain;
+  background: url("../source/social/pinterest.svg") no-repeat center/contain;
 }
 .about .social a.twitter:before {
-  background: url("./img/social/twitter.svg") no-repeat center/contain;
+  background: url("../source/social/twitter.svg") no-repeat center/contain;
   margin-left: 1px;
 }
 
@@ -861,7 +861,7 @@ footer > div {
   .promo > .desc .params > *:after {
     width: 10px;
     height: 5px;
-    background: url("./img/icons/dash-bottom.svg") no-repeat center center/contain;
+    background: url("arrow-bottom.svg") no-repeat center center/contain;
     content: "";
   }
   .promo.main {

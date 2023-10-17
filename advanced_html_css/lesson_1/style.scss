@@ -258,16 +258,16 @@ header {
     }
 
     &.logo {
-      background: url("./img/icons/logo.svg") no-repeat center center / contain;
+      background: url("../source/icons/logo-bcp.svg") no-repeat center center / contain;
       width: 44px;
     }
 
     &.search {
-      background: url("./img/icons/search.svg") no-repeat center center / contain;
+      background: url("../source/icons/search.svg") no-repeat center center / contain;
     }
 
     &.menu {
-      background: url("./img/icons/menu.svg") no-repeat center center / contain;
+      background: url("../source/icons/menu.svg") no-repeat center center / contain;
       overflow: visible;
 
       & > div {
@@ -324,11 +324,11 @@ header {
     }
 
     &.profile {
-      background: url("./img/icons/profile.svg") no-repeat center center / contain;
+      background: url("../source/icons/profile.svg") no-repeat center center / contain;
     }
 
     &.basket {
-      background: url("./img/icons/basket.svg") no-repeat center center / contain;
+      background: url("../source/icons/basket.svg") no-repeat center center / contain;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -441,13 +441,13 @@ footer {
         display: block;
         width: 100%;
         height: 100%;
-        background: url("./img/icons/dash-left.svg") no-repeat center center / contain;
+        background: url("../source/icons/arrow-left.svg") no-repeat center center / contain;
         content: "";
       }
 
       &:hover, &:focus {
         &:before {
-          background: url("./img/icons/dash-right.svg") no-repeat center center / contain;
+          background: url("../source/icons/arrow-right.svg") no-repeat center center / contain;
           transform: rotate(180deg);
         }
       }
@@ -548,7 +548,7 @@ footer {
         &:after {
           width: 10px;
           height: 5px;
-          background: url("./img/icons/dash-bottom.svg") no-repeat center center / contain;
+          background: url("arrow-down.svg") no-repeat center center / contain;
           content: "";
         }
       }
@@ -569,7 +569,7 @@ footer {
       cursor: pointer;
 
       &:before {
-        background: url("./img/icons/basket-color.svg") no-repeat center center / contain;
+        background: url("../source/icons/basket-active.svg") no-repeat center center / contain;
         width: 26px;
         height: 24px;
         content: "";
@@ -720,7 +720,7 @@ footer {
           position: absolute;
           justify-content: right;
           align-items: center;
-          background: url("./img/icons/basket.svg") no-repeat 12px center;
+          background: url("../source/icons/basket.svg") no-repeat 12px center;
           padding: 0 12px;
           width: 116px;
           height: 44px;
@@ -806,19 +806,19 @@ footer {
 
   .delivery {
     &:before {
-      background: url("./img/icons/car.svg") no-repeat center / contain;
+      background: url("../source/icons/car-active.svg") no-repeat center / contain;
     }
   }
 
   .sales {
     &:before {
-      background: url("./img/icons/percent.svg") no-repeat center / contain;
+      background: url("../source/icons/percent-active.svg") no-repeat center / contain;
     }
   }
 
   .quality {
     &:before {
-      background: url("./img/icons/crown.svg") no-repeat center / contain;
+      background: url("../source/icons/crown-active.svg") no-repeat center / contain;
     }
   }
 }
@@ -837,7 +837,7 @@ footer {
     left: 0;
     right: 0;
     bottom: -75%;
-    background: url("./img/images/subsription.png") no-repeat center center / cover;
+    background: url("../source/other/subsription-back.png") no-repeat center center / cover;
     opacity: 0.3;
     content: "";
   }
@@ -997,26 +997,26 @@ footer {
 
       &.facebook {
         &:before {
-          background: url("./img/social/facebook.svg") no-repeat center / contain;
+          background: url("../source/social/facebook.svg") no-repeat center / contain;
           margin-left: -1px;
         }
       }
 
       &.instagram {
         &:before {
-          background: url("./img/social/instagram.svg") no-repeat center / contain;
+          background: url("../source/social/instagram.svg") no-repeat center / contain;
         }
       }
 
       &.pinterest {
         &:before {
-          background: url("./img/social/pinterest.svg") no-repeat center / contain;
+          background: url("../source/social/pinterest.svg") no-repeat center / contain;
         }
       }
 
       &.twitter {
         &:before {
-          background: url("./img/social/twitter.svg") no-repeat center / contain;
+          background: url("../source/social/twitter.svg") no-repeat center / contain;
           margin-left: 1px;
         }
       }
@@ -1132,7 +1132,6 @@ footer {
           &:after {
             width: 10px;
             height: 5px;
-            background: url("./img/icons/dash-bottom.svg") no-repeat center center / contain;
             content: "";
           }
         }

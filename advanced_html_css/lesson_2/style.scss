@@ -1,569 +1,198 @@
-/* <!-- <editor-folder Sizes> --> */
-// Размеры для адаптивного дизайна (взяты из Bootstap'а, тч. считаем за стандарт)
-$size-xs: 576px;
-$size-sm: 768px;
-$size-md: 992px;
-$size-lg: 1200px;
-$size-xl: 1400px;
-// Размеры блоков
-$content-width-max: 1140px;
-$header-height: 75px;
-$footer-height: 80px;
-/* <!-- </editor-folder--> */
-
-/* <!-- <editor-folder Color> --> */
-// BASE
-@mixin colorLight {
-  background: #FFFFFF;
-  color: #222222;
-}
-@mixin colorLightGray {
-  background: #E8E8E8;
-  color: #222222;
-}
-@mixin colorDark {
-  background: #222222;
-  color: #FFFFFF;
-}
-// MENU
-$color-menu-font-1: #000000;
-$color-menu-font-2: #6E6E6E;
-$color-menu-back: #FFFFFF;
-$color-menu-shadow: #00000035;
-// ACTIVE
-$color-active-font: #FFFFFF;
-$color-active: #F16D7F;
-$color-active-focus: #EF5B70;
-
-// PROMO
-$color-promo-font: #222222;
-$color-promo-back: #F7F7F7;
-$color-promo-back-main: #F1E4E6;
-// OFFER
-$color-offers-font: #FFFFFF;
-$color-offers-back: #211616B2;
-// PRODUCT CARD
-$color-card-font-1: #222222;
-$color-card-font-2: #5D5D5D;
-$color-card-font-3: #9F9F9F;
-$color-card-back: #F8F8F8;
-// ADVANTAGES
-$color-advantages-font: #FBFBFB;
-$color-advantages-back: #222222;
-// SUBSCRIPTION
-$color-subscription-font: #222222;
-$color-subscription-back: #FFFFFF;
-/* <!-- </editor-folder--> */
-
-/* <!-- <editor-folder Base> --> */
+/* <!-- <editor-folder Imports> --> */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300&display=swap');
 
+@import "../source/clear";
+@import "../source/mixins";
+
+@import "styles/vars";
+@import "styles/mixins";
+
+// Элементы
+@import "styles/elements/card"; // Карточка товара
+@import "styles/elements/dropdown"; // Выпадающий список
+
+// Блоки контента
+@import "styles/blocks/breadcrumbs"; // Блок хлебных крошек
+@import "styles/blocks/promotion"; // Промо-блок
+@import "styles/blocks/slider"; // Блок слайдера / карточки товара
+@import "styles/blocks/offers"; // Блок предложений
+@import "styles/blocks/products"; // Блок товаров (основной)
+@import "styles/blocks/advantages"; // Блок "Преимущества"
+@import "styles/blocks/subscription"; // Блок подписки
+/* <!-- </editor-folder--> */
+
+/* <!-- <editor-folder Default> --> */
 ::selection {
   background: $color-active;
-  color: $color-active-font;
+  color: $color-1;
 }
+
 ::placeholder {
   color: inherit;
   opacity: 0.6;
 }
-a {
-  color: $color-active;
-  text-decoration: none;
-  cursor: pointer !important;
 
-  &:hover, &:focus {
+a {
+  transition: color 0.2s ease-in-out;
+  color: $color-active;
+
+  &:is(:hover, :focus) {
     color: $color-active-focus;
   }
 }
+
 input {
-  @include colorLightGray;
+  @include flex;
+  @include color($color-1, $color-7);
+  @include font(14px, 400);
+  transition: all 0.2s ease-in-out;
   padding: 5px 20px;
-  font-size: 14px;
-  font-weight: 400;
 
   &[type=submit] {
-    background: $color-active;
-    color: $color-active-font;
+    @include color($color-active, $color-1);
 
     &:hover, &:focus {
-      background: $color-active-focus;
+      @include color($color-active-focus);
     }
   }
 }
 
-@mixin flex {
-  display: flex;
-  align-items: center;
-}
-@mixin flexCenter {
-  @include flex;
-  justify-content: center;
-}
-@mixin flexBetween {
-  @include flex;
-  justify-content: space-between;
-}
-@mixin flexColumn {
-  @include flexCenter;
-  flex-direction: column;
-  align-items: stretch;
-}
-@mixin grid3 {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 30px;
-}
-@mixin productCard {
-  @include flexColumn;
-  gap: 14px;
-  padding: 20px;
-  position: relative;
-  background: $color-card-back;
-  color: $color-card-font-3;
-  font-weight: 400;
-
-  .title {
-    color: $color-card-font-1;
-    font-size: 13px;
-  }
-
-  .desc {
-    color: $color-card-font-2;
-    font-size: 14px;
-    font-weight: 300;
-  }
-
-  strong {
-    color: $color-active;
-    font-size: 16px;
-    font-weight: inherit;
-  }
-
-  img {
-    max-width: calc(100% + 40px);
-    margin: -20px -20px 0;
-  }
-}
-@mixin contentAbsolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: "";
-}
-@mixin contentBlock {
-  display: flex;
-  padding: 0 max(20px, calc((100vw - $content-width-max) / 2));
-}
-
-@mixin icon($w, $h) {
-  @include flexCenter;
-  width: $w;
-  height: $h;
-}
-@mixin font($s, $w) {
-  font-size: $s;
-  font-weight: $w;
-}
-@mixin fontUpper($s, $w) {
-  @include font($s, $w);
-  text-transform: uppercase;
-}
-/* <!-- </editor-folder--> */
-
 body {
   @include flexColumn;
-  @include colorLight;
+  @include color($color-1, $color-7);
   @include font(14px, 400);
-  justify-content: space-between;
   min-height: 100vh;
   font-family: Lato, sans-serif;
   font-style: normal;
   line-height: normal;
+
+  &[data-loading] {
+    visibility: hidden;
+  }
 }
+/* <!-- </editor-folder--> */
 
 body > * {
   &, & > *, & > * > * {
-    border: 1px solid #00ffff40;
+    //border: 1px solid #00ffff40;
   }
 }
 
+@include contentSize($con-pd-desktop);
+
 header {
-  @include contentBlock;
-  @include colorDark;
-  min-height: $header-height;
-  gap: 30px;
+  @include flexRow(max(10px, $content-gap));
+  @include color($color-7);
+  height: $header-height;
 
-  .icon {
-    @include icon(29px, auto);
-    @include font(12px, 400);
+  & > * {
+    cursor: pointer;
+  }
 
-    &.logo {
-      @include icon(44px, auto);
-      background: url("./img/icons/logo.svg") no-repeat center / contain;
-    }
+  .logo {
+    @include icon($header-icon + 15px, "../source/icons/logo.svg");
+  }
 
-    &.search {
-      background: url("./img/icons/search.svg") no-repeat center / contain;
-      margin-right: auto;
-    }
+  .search {
+    @include icon($header-icon, "../source/icons/search.svg");
+  }
 
-    &.menu {
-      background: url("./img/icons/menu.svg") no-repeat center / contain;
+  .menu {
+    @include icon($header-icon, "../source/icons/menu.svg");
+    @include viewOnFocus(div);
+    margin-left: auto;
 
-      &:hover, &:focus {
-        & > * {
-          display: flex;
-        }
+    & > div {
+      @include flexColumn(20px);
+      @include color($color-1, $color-6);
+      box-shadow: 6px 4px 35px #{$color-7}35;
+      position: absolute;
+      top: $header-height;
+      right: $con-pd-desktop;
+      padding: 30px;
+      width: 230px;
+      z-index: 100;
+      cursor: default;
+
+      &:before {
+        @include fontUpper(inherit, 700, $color-7);
+        content: "Menu";
       }
 
-      & > div {
-        @include flexColumn;
-        @include font(14px, 400);
-        display: none;
-        position: absolute;
-        top: $header-height;
-        right: max(20px, calc((100vw - $content-width-max) / 2));
-        padding: 30px;
-        gap: 20px;
-        width: 230px;
-        background: $color-menu-back;
-        box-shadow: 6px 4px 35px $color-menu-shadow;
-        z-index: 100;
+      .category {
+        @include flexColumn(10px);
 
-        &:before {
-          @include font(inherit, 700);
-          color: $color-menu-font-1;
-          text-transform: uppercase;
-          content: "Menu";
-        }
+        & > * {
+          color: inherit;
+          margin-left: 20px;
 
-        .category {
-          display: flex;
-          flex-direction: column;
-          color: $color-active;
-          gap: 10px;
-          text-transform: uppercase;
-
-          & > * {
-            margin: 0 0 0 20px;
-            color: $color-menu-font-2;
-            text-transform: none;
-            cursor: default;
-
-            &:first-child {
-              margin: 0;
-              color: inherit;
-              text-transform: inherit;
-            }
+          &:is(.name) {
+            @include fontUpper(inherit, inherit, $color-active);
+            margin-left: 0;
           }
         }
       }
     }
+  }
 
-    &.profile {
-      background: url("./img/icons/profile.svg") no-repeat center / contain;
-    }
+  .profile {
+    @include icon($header-icon, "../source/icons/profile.svg");
+  }
 
-    &.basket {
-      background: url("./img/icons/basket.svg") no-repeat center / contain;
+  .basket {
+    @include icon($header-icon, "../source/icons/basket.svg");
 
-      .icon {
-        @include icon(19px, 19px);
-        background: $color-active;
-        color: $color-active-font;
-        margin: -23px -23px 0 0;
-        border-radius: 50%;
-      }
+    &:after {
+      @include flex;
+      @include color($color-active, $color-1);
+      position: absolute;
+      border-radius: 50%;
+      margin: (-$header-icon / 1.25) (-$header-icon / 1.15) 0 0;
+      width: $header-icon / 1.53;
+      height: $header-icon / 1.53;
+      font-size: $header-icon / 2.42;
+      content: attr(data-count);
     }
   }
 }
 
 main {
-  @include flexColumn;
-  margin-bottom: auto;
-
-  & > * {
-    @include contentBlock;
-    gap: 20px;
-    //border: 1px solid #f00;
-  }
-
-  .promotions {
-    @include flexCenter;
-    background: $color-promo-back;
-    color: $color-promo-font;
-    gap: 60px;
-
-    strong {
-      font-weight: inherit;
-      color: $color-active;
-    }
-
-    &.main {
-      background: $color-promo-back-main;
-      justify-content: space-around;
-
-      .image {
-        @include flexCenter;
-        max-width: 50%;
-
-        img {
-          max-height: 764px;
-          max-width: calc(100% + 360px);
-          margin: 0 -160px 0 -200px;
-        }
-      }
-
-      .name {
-        @include flexColumn;
-        @include font(32px, 700);
-        margin: auto;
-        text-transform: uppercase;
-        border-left: 12px solid #F16D7F;
-        padding: 0 0 0 16px;
-
-        & > :first-child {
-          @include font(48px, 900);
-        }
-      }
-    }
-  }
-
-  .offers {
-    @include grid3;
-
-    & > .card {
-      @include productCard;
-
-      &:nth-child(4n) {
-        grid-column: 1/4;
-      }
-
-      & > * {
-        @include flexCenter;
-        @include fontUpper(16px, inherit);
-        flex-direction: column;
-        background: $color-offers-back;
-        color: $color-offers-font;
-
-        strong {
-          @include font(24px, 700);
-        }
-
-        &:is(img) {
-          margin: -20px;
-        }
-
-        &:not(img) {
-          @include contentAbsolute;
-        }
-      }
-    }
-  }
-
-  .products {
-    @include grid3;
-
-    .title, .more {
-      grid-column: 1/4;
-    }
-
-    & > * {
-      @include flexColumn;
-    }
-
-    & > .card {
-      @include productCard;
-
-      &.title, &.more {
-        @include font(14px, 400);
-        background: none;
-        gap: 0;
-        text-align: center;
-
-        .title {
-          @include font(30px, inherit);
-        }
-      }
-
-      &.more {
-        align-items: center;
-        //padding: 0;
-        font-size: 16px;
-
-        & > * {
-          padding: 15px 40px;
-          border: 1px solid $color-active;
-          color: $color-active;
-
-          &:hover, &:focus {
-            background: #F26376;
-            color: #FFF;
-          }
-        }
-      }
-    }
-  }
-
-  .advantages {
-    @include flexBetween;
-    background: $color-advantages-back;
-    color: $color-advantages-font;
-
-    & > * {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 15px;
-      padding: 100px 0;
-      width: 360px;
-      max-width: 100%;
-      text-wrap: balance; /* Ya.Browser, G.Chrome поддерживают */
-      text-align: center;
-
-      strong {
-        font-size: 20px;
-        font-weight: 400;
-        text-transform: uppercase;
-      }
-
-      &:before {
-        display: block;
-        width: 45px;
-        height: 45px;
-        content: "";
-      }
-
-      &.delivery:before {
-        background: url("./img/icons/car.svg") no-repeat center / contain;
-      }
-
-      &.sales:before {
-        background: url("./img/icons/percent.svg") no-repeat center / contain;
-      }
-
-      &.quality:before {
-        background: url("./img/icons/crown.svg") no-repeat center / contain;
-      }
-    }
-  }
-
-  .subscription {
-    @include flexBetween;
-    position: relative;
-    overflow: hidden;
-    color: $color-subscription-font;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: center;
-
-    &:before {
-      @include flexCenter;
-      @include contentAbsolute;
-      background: url("./img/images/subsription.png") no-repeat center bottom -440px / cover;
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    & > div {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 30px;
-      padding: 100px 0;
-      max-width: 100%;
-
-      &.review {
-        width: 360px;
-
-        .photo {
-          @include flexCenter;
-          border-radius: 50%;
-          width: 96px;
-          height: 96px;
-          overflow: hidden;
-
-          img {
-            height: 150%;
-            margin-bottom: -25%;
-          }
-        }
-
-        q {
-          &:before {
-            content: "“";
-          }
-
-          &:after {
-            content: "“";
-          }
-        }
-      }
-
-      &.subscribe {
-        width: 560px;
-        font-size: 18px;
-        line-height: 168%;
-        text-transform: uppercase;
-
-        span {
-          @include flexColumn;
-        }
-
-        strong {
-          font-size: 24px;
-          font-weight: 700;
-        }
-
-        form {
-          @include flexCenter;
-          height: 50px;
-          border-radius: 25px;
-          max-width: 360px;
-          width: 100%;
-          overflow: hidden;
-        }
-
-        input {
-          height: 100%;
-          width: 100%;
-
-          &[type=submit] {
-            max-width: 100px;
-          }
-        }
-      }
-    }
-  }
+  @include flexColumn($content-gap);
 }
 
 footer {
-  @include contentBlock;
-  @include colorDark;
+  @include flexRow($content-gap);
+  @include color($color-7, $color-1);
+  @include font(16px, 400);
   min-height: $footer-height;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
+  cursor: default;
 
   & > * {
-    @include flexCenter;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .copyright {
-    cursor: default;
+    @include flexRow(8px, center);
+    padding: 10px 0;
+    text-align: center;
   }
 
   .social {
+    .facebook {
+      @include icon($footer-icon - 16px, "../source/social/facebook.svg");
+    }
+
+    .instagram {
+      @include icon($footer-icon - 16px, "../source/social/instagram.svg");
+    }
+
+    .pinterest {
+      @include icon($footer-icon - 16px, "../source/social/pinterest.svg");
+    }
+
+    .twitter {
+      @include icon($footer-icon - 16px, "../source/social/twitter.svg");
+    }
+
     & > * {
-      @include flexCenter;
-      @include colorLight;
-      width: 32px;
-      height: 32px;
+      @include color($color-1, $color-7);
+      padding: 8px;
 
       &:hover, &:focus {
         background: $color-active;
@@ -572,30 +201,42 @@ footer {
           filter: invert(1);
         }
       }
+    }
+  }
+}
 
-      &:before {
-        width: 16px;
-        height: 16px;
-        content: "";
-      }
+// Tablet
+@media (max-width: $size-md), (max-width: $size-sm) and (orientation: portrait) {
+  @include contentSize($con-pd-tablet);
+
+  header > .menu > div {
+    right: $con-pd-tablet;
+  }
+}
+
+// Mobile
+@media (max-width: $size-xs), (max-width: $size-sm) and (orientation: landscape) {
+  @include contentSize($con-pd-mobile);
+
+  header {
+    .profile, .basket {
+      display: none;
     }
 
-    .facebook:before {
-      background: url("./img/social/facebook.svg") no-repeat center / contain;
-      margin-left: -1px;
+    & > .menu > div {
+      padding: max(10px, $content-gap) $con-pd-mobile;
+      left: 0;
+      right: 0;
+      width: auto;
     }
+  }
 
-    .instagram:before {
-      background: url("./img/social/instagram.svg") no-repeat center / contain;
-    }
+  footer {
+    @include flexColumn(0, center);
 
-    .pinterest:before {
-      background: url("./img/social/pinterest.svg") no-repeat center / contain;
-    }
-
-    .twitter:before {
-      background: url("./img/social/twitter.svg") no-repeat center / contain;
-      margin-left: 1px;
+    .social {
+      padding: 40px 0 30px;
+      order: -1;
     }
   }
 }
