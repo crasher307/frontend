@@ -222,7 +222,7 @@ select, textarea {
 .dropdown[open] > details > :last-child:not(summary) {
   margin-bottom: 10px;
 }
-.dropdown [open] > summary, .dropdown[open] > summary {
+.dropdown [open] > summary, .dropdown [open] * > :is(:hover, :focus), .dropdown[open] > summary, .dropdown[open] * > :is(:hover, :focus) {
   color: #F16D7F;
 }
 .dropdown.filter > summary:after {

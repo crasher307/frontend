@@ -72,7 +72,7 @@
   }
 
   [open], &[open] {
-    & > summary {
+    & > summary, * > :is(:hover, :focus) {
       color: $color-active;
     }
   }
