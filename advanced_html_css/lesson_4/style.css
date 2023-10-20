@@ -1398,6 +1398,162 @@ select, textarea {
     gap: 50px;
   }
 }
+.registration {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+  padding-top: 60px;
+  padding-bottom: 90px;
+  /* <!-- <editor-folder RadioButtons> --> */
+  /* <!-- </editor-folder--> */
+}
+.registration input, .registration button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 300;
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid #9F9F9F;
+}
+.registration input[type=radio] {
+  display: none !important;
+}
+.registration input[type=radio] + label {
+  cursor: pointer;
+}
+.registration input[type=radio] + label:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  padding: 2px;
+  border: 1px solid #9F9F9F;
+  border-radius: 50%;
+  content: "";
+}
+.registration input[type=radio]:checked + label:before {
+  border: 1px solid #F16D7F;
+  background: url("../source/icons/check.svg") no-repeat center/contain;
+  background-origin: content-box;
+}
+.registration form {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 300;
+  width: 360px;
+  max-width: 100%;
+}
+.registration form .group-check {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  font-size: 11px;
+  font-weight: 300;
+  padding: 10px 0;
+}
+.registration form .group-check > * {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+.registration form .desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: #C4C4C4;
+  margin-bottom: 20px;
+}
+.registration form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #F16D7F;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0 30px;
+  width: max-content;
+}
+.registration form button:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../source/icons/arrow.svg") no-repeat center/contain;
+  filter: invert(1);
+  width: 17px;
+  height: 17px;
+  content: "";
+}
+.registration form button:is(:hover, :focus) {
+  background: #E05C6E;
+}
+.registration .info {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-direction: column;
+  font-size: 24px;
+  font-weight: 300;
+  width: 650px;
+  max-width: 100%;
+}
+.registration .info .title {
+  text-transform: uppercase;
+}
+.registration .info .props {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+.registration .info .props:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../source/icons/check.svg") no-repeat center/contain;
+  width: 20px;
+  height: 20px;
+  content: "";
+}
+
+@media (max-width: 992px), (max-width: 768px) and (orientation: portrait) {
+  .registration {
+    padding-top: 40px;
+  }
+  .registration form, .registration .info {
+    width: auto;
+    max-width: 50%;
+  }
+}
+@media (max-width: 576px), (max-width: 768px) and (orientation: landscape) {
+  .registration {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    flex-direction: column;
+  }
+  .registration form, .registration .info {
+    max-width: 100%;
+  }
+  .registration .info {
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
 /* <!-- </editor-folder--> */
 /* <!-- <editor-folder Default> --> */
 ::selection {
