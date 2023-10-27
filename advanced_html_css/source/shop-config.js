@@ -58,7 +58,13 @@ const products = {
 
 // --- Add content ---
 
-document.getElementById('menu').innerHTML = menuHtml();
+let menu = document.getElementById('menuElements');
+if (!menu) {
+    menu = document.getElementById('menu');
+    menu.innerHTML = menuHtml();
+} else {
+    menu.innerHTML = menuHtml(false);
+}
 document.getElementById('copyright').innerHTML = copyright;
 document.getElementById('social').innerHTML = socialHtml();
 productLoad();
@@ -67,10 +73,10 @@ productLoad();
 
 // --- Functions ---
 
-function menuHtml() {
+function menuHtml(div = true) {
     const link = (data, isName) => `<a${isName ? ` class="name"` : ''} href="${data.link}">${data.name}</a>`;
     const category = (data) => `<div class="category">${data.join('')}</div>`;
-    const menu = (data) => `<div>${data.join('')}</div>`;
+    const menu = (data) => div ? `<div>${data.join('')}</div>` : `${data.join('')}`;
 
     return menu(menuLinks.reduce((data, el) => {
         const links = [link(el, true)];
