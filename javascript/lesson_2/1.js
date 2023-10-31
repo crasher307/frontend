@@ -13,16 +13,10 @@
 Уточнение: пользователь всегда вводит корректное число.
 */
 
-const data = {
-    celsius: null,
-    fahrenheit: null,
-    error: null,
-};
-
-data.celsius = Number(prompt('Введите температуру в градусах Цельсия (°C):'));
-data.fahrenheit = (9 / 5) * data.celsius + 32;
-if ([data.celsius, data.fahrenheit].includes(NaN)) {
-    data.error = 'Полученное значение не является числом';
-    console.error(data.error);
+const celsius = Number(prompt('Введите температуру в градусах Цельсия (°C):'));
+if (Number.isNaN(celsius)) {
+    alert('Полученное значение не является числом');
+} else {
+    const fahrenheit = Math.round(((9 / 5) * celsius + 32) * 10) / 10;
+    alert(`Цельсий: ${celsius} °C, Фаренгейт: ${fahrenheit} °F`);
 }
-alert(!data.error ? `Цельсий: ${data.celsius} °C, Фаренгейт: ${data.fahrenheit} °F` : data.error);
