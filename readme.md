@@ -127,8 +127,38 @@
 </details>
 
 #### Продвинутый HTML + CSS
+- Пройдено, [TODO заполнить]
 
 #### Основы Javascript
+<details class="desc" data-number="1"><summary>Урок 1. Лекция. Знакомство с JavaScript</summary>
+
+- План урока:
+  - Знакомство с JavaScript(JS)
+  - Стандарты JavaScript
+  - Переменные и область видимости
+  - Узнаем, какие типы данных есть в JS.
+
+</details>
+<details class="desc" data-number="2"><summary>Урок 2. Семинар. Знакомство с JavaScript</summary>
+
+- [Работа](javascript/lesson_2)
+- Дополнительно:
+  - [Д/З](https://disk.yandex.ru/d/hLkt0fSwXhShmA)
+  - [Семинар](https://github.com/Maks-Shashkov/JS_practick_GB)
+
+</details>
+<details class="desc" data-number="3"><summary>Урок 3. Лекция. Основы JavaScript</summary>
+
+- План урока:
+  - Работа с операторами
+  - Операторы сравнения
+  - Преобразования типов данных
+  - Приведение типов
+  - Встроенные функции alert, prompt, confirm
+  - Работа с отладчиком браузера
+  - Логические и арифметические операторы
+
+</details>
 
 #### Продолжение JavaScript
 
