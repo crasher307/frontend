@@ -14,6 +14,7 @@
 число 32.
 */
 
+// Записано тернарными выражениями, тк. код небольшой и так меньше места занимает
 const dayNumber = Number(prompt('Введите число от 1 до 31 включительно:'));
 const invalid2 = Number.isNaN(dayNumber) || dayNumber < 1 || dayNumber > 31;
 let dec = !invalid2 ? Math.ceil(dayNumber / 10) : 0;

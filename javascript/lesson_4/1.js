@@ -15,5 +15,5 @@
 
 const positive = Number(prompt('Введите положительное число:'));
 const negative = Number(prompt('Введите отрицательное число:'));
-const invalid1 = Number.isNaN(positive) || Number.isNaN(negative) || positive < 0 || negative > 0;
+const invalid1 = Number.isNaN(positive) || Number.isNaN(negative) || positive <= 0 || negative >= 0;
 console.log(invalid1 ? 'Одно или более значений некорректно' : 'Все значения верные');
