@@ -15,7 +15,7 @@ const COUNT = 3;
 const numbers = [];
 const invalid2 = [];
 for (let i = 0; i < COUNT; i++) {
-    numbers[i] = Number(prompt(`Введите ${i + 1}-ое число:`));
+    numbers[i] = Number(prompt(`Введите ${i + 1}-е число:`));
     invalid2[i] = Number.isNaN(numbers[i]);
 }
 
