@@ -22,11 +22,10 @@ for (let i = 0; i < COUNT; i++) {
 if (invalid2.includes(true)) {
     console.log(`Одно из значений введено некорректно`);
 } else {
-    console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${Math.max(...numbers)}.`);
-    // console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${max(...numbers)}.`);
+    // console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${Math.max(...numbers)}.`);
+    max(...numbers);
 }
 
-// На всякий случай (тк. есть в задании)
 function max(...args) {
     let max = null;
     for (let i = 0; i < args.length; i++) {
@@ -34,5 +33,6 @@ function max(...args) {
             max = args[i];
         }
     }
+    console.log(`Максимальное значение среди чисел ${args.join(', ')} равно ${max}.`);
     return max;
 }
