@@ -10,11 +10,11 @@
 три числа. Проверять их не нужно.
 */
 
-const count = 3;
+const COUNT = 3;
 
 const numbers = [];
 const invalid2 = [];
-for (let i = 0; i < count; i++) {
+for (let i = 0; i < COUNT; i++) {
     numbers[i] = Number(prompt(`Введите ${i + 1}-ое число:`));
     invalid2[i] = Number.isNaN(numbers[i]);
 }
