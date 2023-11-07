@@ -20,7 +20,7 @@ for (let i = 0; i < count; i++) {
 }
 
 if (invalid2.includes(true)) {
-    console.log(`Одно из значений ${numbers} введено некорректно`);
+    console.log(`Одно из значений введено некорректно`);
 } else {
     console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${Math.max(...numbers)}.`);
     // console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${max(...numbers)}.`);
