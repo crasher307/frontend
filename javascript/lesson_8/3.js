@@ -14,20 +14,19 @@
 не окажется, значит нужно будет вывести пустой массив.
 */
 
-const COUNT_NUM = 5;
 const arrNum = [];
-for (let i = 0; i < COUNT_NUM; i++) {
-    arrNum.push(Math.abs(Math.ceil((Math.random() - 0.1) * 10)));
+for (let i = 0; i < 5; i++) {
+    arrNum.push(Math.round(Math.random() * 9));
 }
 
-const sum = arrNum.reduce((a, b) => a + b, 0);
-const min = Math.min(...arrNum);
-const arr3 = [];
-arrNum.forEach((val, idx) => val !== 3 ? null : arr3.push(idx));
+const arr3 = arrNum.reduce((data, val, idx) => {
+    if (val === 3) {
+        data.push(idx);
+    }
+    return data;
+}, []);
 
-console.log({
-    'Начальный массив [0,9]': arrNum,
-    'Сумма эл-ов массива': sum,
-    'Мин. знач. в массиве': min,
-    'Индексы массива, содержащие значение 3': arr3,
-});
+console.log('Начальный массив [0,9]', arrNum);
+console.log('Сумма эл-ов массива', arrNum.reduce((a, b) => a + b, 0));
+console.log('Мин. знач. в массиве', Math.min(...arrNum));
+console.log('Индексы массива, содержащие значение 3', arr3);

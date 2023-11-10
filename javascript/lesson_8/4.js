@@ -12,8 +12,6 @@ xxxx
 xxxxx
 */
 
-const HEIGHT = 20;
-const SYM = 'X';
-for (let i = 1; i <= HEIGHT; i++) {
-    console.log(''.padEnd(i, SYM));
+for (let i = 1; i <= 20; i++) {
+    console.log(''.padEnd(i, 'X'));
 }
