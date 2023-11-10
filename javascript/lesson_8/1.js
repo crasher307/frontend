@@ -11,12 +11,16 @@
 */
 
 const COUNT = 10;
+
 const check = (num) => {
     if (num === 0) {
         return 'это ноль';
     }
     return `${num % 2 !== 0 ? 'не' : ''}четное число`;
 };
+// но я бы предпочел записать так, хоть и трудно читается :)
+const checkTest = (num) => num === 0 ? 'это ноль' : `${num % 2 !== 0 ? 'не' : ''}четное число`;
+
 for (let i = 0; i <= COUNT; i++) {
     console.log(`${i} - ${check(i)}`);
 }
