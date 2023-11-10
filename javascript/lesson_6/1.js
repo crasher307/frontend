@@ -7,5 +7,5 @@
 который получаем от функции, в консоль.
 */
 
-const qube = (num) => Math.pow(num, 3);
+const qube = (num) => Math.pow(num, 3); // num ** 3
 console.log(qube(3));

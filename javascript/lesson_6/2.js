@@ -13,6 +13,7 @@ const PERCENT = 13;
 const clsSum = (num) => Math.round(num / 100 * (100 - PERCENT) * 100) / 100;
 
 const num = Number(prompt('Введите число:'));
-const invalid1 = Number.isNaN(num);
 
-console.log(!invalid1 ? `Размер заработной платы за вычетом налогов равен ${clsSum(num)} ₽` : 'Значение задано неверно');
+console.log(Number.isFinite(num)
+    ? `Размер заработной платы за вычетом налогов равен ${clsSum(num)} ₽`
+    : 'Значение задано неверно');

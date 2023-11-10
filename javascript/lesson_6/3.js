@@ -13,26 +13,21 @@
 const COUNT = 3;
 
 const numbers = [];
-const invalid2 = [];
 for (let i = 0; i < COUNT; i++) {
     numbers[i] = Number(prompt(`Введите ${i + 1}-е число:`));
-    invalid2[i] = Number.isNaN(numbers[i]);
 }
 
-if (invalid2.includes(true)) {
-    console.log(`Одно из значений введено некорректно`);
-} else {
-    // console.log(`Максимальное значение среди чисел ${numbers.join(', ')} равно ${Math.max(...numbers)}.`);
-    max(...numbers);
-}
+max(...numbers);
 
 function max(...args) {
-    let max = null;
-    for (let i = 0; i < args.length; i++) {
-        if (max === null || max < args[i]) {
-            max = args[i];
+    let invalid = false;
+    for (let i = 0; i < numbers.length; i++) {
+        if (!Number.isFinite(numbers[i])) {
+            invalid = true;
+            break;
         }
     }
-    console.log(`Максимальное значение среди чисел ${args.join(', ')} равно ${max}.`);
-    return max;
+    console.log(invalid
+        ? `Одно из значений введено некорректно`
+        : `Максимальное значение среди чисел ${args.join(', ')} равно ${Math.max(...args)}.`);
 }
