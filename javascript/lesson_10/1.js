@@ -17,5 +17,5 @@ const numbers = {
 
 console.log({
     numbers,
-    'больше или равны 3': Object.values(numbers).filter(el => el >= 3)
+    'больше или равны 3': Object.values(numbers).filter(el => el >= 3),
 });
