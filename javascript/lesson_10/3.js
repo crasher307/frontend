@@ -23,5 +23,5 @@ const products = [
     },
 ];
 
-products.forEach(el => el.price = Math.round(el.price * 0.85));
+products.forEach(el => el.price = Math.round(el.price * 0.85 * 100) / 100);
 console.log(products);
