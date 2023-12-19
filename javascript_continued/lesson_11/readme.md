@@ -1,10 +1,10 @@
 ## Продолжение JavaScript
 ### Урок 11. Семинар. Шаблонизация
 
-Семинар (код: [index.html](index.html), [script.js](script.js))
+Семинар (код: [index.html](index.html), [script.js](script.js), [data.js](data.js))
 
 ![image](homework.png)\
-Домашнее задание (код: [homework.html](homework.html), [homework.js](homework.js))
+Домашнее задание (код: [homework.html](homework.html), [homework.js](homework.js), [dataHomework.js](dataHomework.js))
 
 Повторить то, что на семинаре, либо решить следующее задание
 1. Дан [макет сайта](https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=190%3A1194&t=q4NMnXTnwyyTSGA6-0)

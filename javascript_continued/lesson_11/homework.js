@@ -23,6 +23,7 @@ data.forEach(data => {
         '.desc .title': {innerHTML: data.name},
         '.desc .text': {innerHTML: data.desc},
         '.desc .price': {innerHTML: data.price},
+        'a': {href: data.link},
     });
     listPages.before(pr);
     console.log('add product', pr);
