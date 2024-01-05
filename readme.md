@@ -457,7 +457,6 @@
 <details class="block" data-block="JavaScript про ECMAScript">
 <summary>JavaScript про ECMAScript</summary>
 
-
 <details class="desc" data-number="1"><summary>Урок 1. Функциональный Javascript</summary>
 
 - Лекция
@@ -476,10 +475,27 @@
 - [Семинар](javascript_ecmascript/lesson_2)
 
 </details>
-<details class="desc" data-number="3"><summary></summary>
+<details class="desc" data-number="3"><summary>Урок 3. Объектно-ориентированное программирование в Javascript</summary>
+
+- Лекция
+  - Разберем подробнее тему объектно-ориентированного программирования.
+  - Познакомиться с тем как работает наследование в JavaScript и что такое прототип объекта.
+  - Прототип
+  - Методы для установки прототипа
+  - Конструктор объекта
+  - new
+  - Object.create
+  - Создание объектов и наследование с использованием class и extends
+- [Семинар](javascript_ecmascript/lesson_3)
 
 </details>
-<details class="desc" data-number="4"><summary></summary>
+<details class="desc" data-number="4"><summary>Урок 4. Асинхронность в Javascript</summary>
+
+- Лекция
+  - Асинхронность
+  - Формат данных JSON
+  - async/await
+- [Семинар](javascript_ecmascript/lesson_4)
 
 </details>
 
