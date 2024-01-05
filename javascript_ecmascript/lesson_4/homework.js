@@ -121,4 +121,3 @@ class Request {
 
 const request = new Request('GET', 'https://jsonplaceholder.typicode.com/users');
 request.send();
-console.log('request:', request.getData());
