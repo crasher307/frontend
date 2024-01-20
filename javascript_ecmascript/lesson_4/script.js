@@ -10,11 +10,9 @@ Request('GET', url)
         console.warn(resp.error);
     });
 
-fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-    });
+RequestTest(url).then((data) => {
+    console.log(data);
+});
 
 async function Request(method, url, timeout = 2000) {
     const statuses = [
@@ -45,4 +43,8 @@ async function Request(method, url, timeout = 2000) {
         request.open(method, url);
         request.send();
     });
+}
+async function RequestTest(url) {
+    const response = await fetch(url);
+    return await response.json();
 }
