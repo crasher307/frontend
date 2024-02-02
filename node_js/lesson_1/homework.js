@@ -41,7 +41,7 @@ class Counter {
         });
     }
     __save(data) {
-        const json = JSON.stringify(data);
+        const json = JSON.stringify(data, null, 4);
         return new Promise((resolve) => {
             libs.fs
                 .writeFile(this.__file, json, {flag: 'w+'}, (err) => {
