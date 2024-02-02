@@ -1,110 +1,134 @@
+'use strict';
+
+const libs = {
+    http: require('http'),
+    fs: require('fs'),
+};
+
+class Counter {
+    __file = '';
+
+    constructor(file) {
+        this.__file = file;
+    }
+
+    async update(url, code) {
+        // load
+        let data = await this.__load();
+        // update
+        const page = data.find(e => e.url === url);
+        if (!page) {
+            data.push({code, views: 1, url});
+        } else {
+            page.code = code;
+            page.views += 1;
+        }
+        // sort
+        const srt = (arr) => arr.sort((a, b) => b.views - a.views);
+        data = [
+            ...srt(data.filter(e => e.code !== 200)),
+            ...srt(data.filter(e => e.code === 200)),
+        ];
+        // save
+        return await this.__save(data);
+    }
+    __load() {
+        return new Promise((resolve) => {
+            libs.fs
+                .readFile(this.__file, 'utf8', (err, data) => {
+                    resolve(!err ? JSON.parse(data) : []);
+                });
+        });
+    }
+    __save(data) {
+        const json = JSON.stringify(data);
+        return new Promise((resolve) => {
+            libs.fs
+                .writeFile(this.__file, json, {flag: 'w+'}, (err) => {
+                    resolve(!err);
+                });
+        });
+    }
+}
+
 class Server {
-    static __http = require('http');
-    static __fs = require('fs');
-    static __root = '';
-    static __pages = [];
+    static __conf = {
+        root: '', // root path
+        mime: {
+            html: 'text/html', // default
+            css: 'text/css',
+            js: 'text/javascript',
+            json: 'application/json',
+            svg: 'image/svg+xml',
+            map: 'application/octet-stream',
+        },
+        error: {
+            file: 'error.html',
+            html: '<span style="color: #904040">Error {{code}}: {{message}}</span>',
+        },
+        counter: {
+            file: 'counter.json',
+            obj: null,
+        },
+    };
 
     static start(rootPath, port = 3000) {
-        this.__root = rootPath;
-        this.__http
+        console.clear();
+        this.__conf.root = rootPath.replace(/\/+$/g, '');
+        this.__conf.counter.obj = new Counter(`${this.__conf.root}/${this.__conf.counter.file}`);
+        this.__loadFile(this.__conf.error.file)
+            .then((data) => this.__conf.error.html = data.data);
+        libs.http
             .createServer(this.__handler)
             .listen(port, () => console.log(`Сервер запущен на порту ${port}`));
     }
 
-    static __counter(code, url) {
-        const page = (Server.__pages).find(e => e.url === url);
-        if (page) {
-            page.lastCode = code;
-            page.counter += 1;
-        } else {
-            (Server.__pages).push({
-                lastCode: code,
-                counter: 1,
-                url: url,
-            });
-        }
-    }
+    /** Обработчики */
+    static __handler = (req, res) => Server.__loadPage(res, req.url);
+    static __counter = (url, code) => Server.__conf.counter.obj.update(url, code);
 
-    static __getFile(address) {
-        return new Promise(async (resolve, reject) => {
-            await Server.__fs.readFile(address, 'utf8', (err, data) => {
-                !err ? resolve(data) : reject(err);
-            });
+    /** Загрузка страницы */
+    static async __loadPage(res, url) {
+        const data = await this.__loadFile(url);
+        if (data.error) {
+            data.data = this.__conf.error.html
+                .replaceAll('{{code}}', data.code)
+                .replaceAll('{{message}}', data.error);
+        }
+        res.writeHead(data.code, {
+            'Content-Type': `${data.mime}; charset=utf-8`,
+            'Content-Language': `ru`,
+            'Cache-Control': `private`,
         });
+        res.end(data.data);
+        if (data.mime === this.__conf.mime.html) {
+            this.__counter(url, data.code);
+        }
     }
 
-    static __view(res, header, content) {
-        const counter = Server.__pages.find(e => e.url === header.url);
+    /** Загрузка файла */
+    static __loadFile(url) {
+        const addr = `${url}`.replace(/^\/+/g, '').split('/');
+        let file = addr.pop().split('.');
+        let ext = file.length > 1 ? file.pop() : 'html';
 
-        const headers = {};
-        headers['Content-Type'] = `${header.type}; charset=${header.charset}`;
-        if (counter) {
-            headers['Set-Cookie'] = `countView=${counter ? counter.counter : 0}`;
-        }
-        res.writeHead(header.code, headers);
-        res.end(content);
-    }
+        file = file.join('.') || 'index';
+        (file === 'favicon') && (ext = 'svg');
 
-    static __handler(req, res) {
-        const method = req.method;
-        const url = req.url === '/' ? '/index' : `${req.url}`;
-        let file = Server.__root;
-        const header = {
-            code: 200,
-            type: 'text/html',
-            charset: 'UTF-8',
-            url: url,
-        };
+        const address = [this.__conf.root, ...addr, `${file}.${ext}`].filter(e => e.length).join('/');
 
-        console.clear();
-        console.log('\n');
-        console.log(`Запрос получен: @${method} ${url} [${file}]`);
-        switch (url) {
-            case '/style.css':
-            case '/style.css.map':
-                header.type = 'text/css';
-                file = 'style.css';
-                break;
-            case '/favicon.ico':
-                header.type = 'image/svg+xml';
-                file = 'favicon.svg';
-                break;
-            default:
-                if (url.slice(-3) === '.js') {
-                    header.type = 'text/javascript';
-                    file += url;
-                } else {
-                    file += `${url}.html`;
-                    Server.__counter(header.code, url);
-                }
-        }
-        Server.__pages.sort((a, b) => b.counter - a.counter);
-        console.log('Counter:', Server.__pages);
-
-        Server.__getFile(file)
-            .then((data) => {
-                header.code = 200;
-                Server.__view(res, header, data);
-            })
-            .catch(() => {
-                header.code = 404;
-                Server.__getFile(`${Server.__root}/404.html`)
-                    .then((data) => {
-                        Server.__view(res, header, data);
+        return new Promise((resolve) => {
+            libs.fs
+                .readFile(address, 'utf8', (err, data) => {
+                    resolve({
+                        code: !err ? 200 : 404,
+                        mime: !err ? (this.__conf.mime[ext] || this.__conf.mime.html) : this.__conf.mime.html,
+                        data: !err ? data : '',
+                        error: !err ? false : 'Page not found!',
                     })
-                    .catch(() => {
-                        Server.__view(
-                            res,
-                            header,
-                            `<!DOCTYPE html>` +
-                            `<html lang="ru">` +
-                            `<head><title>Page not found!</title></head>` +
-                            `<body>Error 404: Page not found!</body>` +
-                            `</html>`
-                        );
-                    });
-            });
+                });
+        });
     }
 }
 
-Server.start('./lesson_1/pages');
+Server.start('./web/');

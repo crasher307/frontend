@@ -102,6 +102,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 14px;
 }
 
 a {
@@ -128,19 +129,43 @@ a {
 }
 
 .content {
-  display: flex;
+  display: block;
   padding: 10px 20px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+.info .cell {
+  padding: 5px 10px;
+}
+.info .cell:is(:nth-child(6n), :nth-child(6n-1), :nth-child(6n-2)) {
+  background: rgba(34, 119, 204, 0.2509803922);
+}
+.info .cell:before {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.info .cell-code:before {
+  content: "code: ";
+}
+.info .cell-views:before {
+  content: "views: ";
+}
+.info .cell-url:before {
+  content: "url: ";
 }
 
 .counter {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  right: 0;
   display: flex;
   justify-self: end;
   padding: 5px;
   font-size: 12px;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .error-block {
