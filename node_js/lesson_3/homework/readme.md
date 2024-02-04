@@ -6,7 +6,7 @@ npm i && clear
 nodemon "index.js"
 ```
 
-[Открыть (после запуска)](://localhost:3000)
+[Открыть (после запуска)](http://localhost:3000)
 
 ### Задание
 
