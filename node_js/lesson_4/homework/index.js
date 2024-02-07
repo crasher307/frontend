@@ -3,6 +3,13 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
+import joi from "joi";
+
+const User = joi.object({
+    id: joi.number().required(),
+    username: joi.string().alphanum().min(2).required(),
+    password: joi.string().pattern(/^[a-zA-Z0-9]{8,30}$/i).required(),
+});
 
 class Server {
     static app;
@@ -47,7 +54,7 @@ class Server {
 
     static __usersHandler(req, res) {
         const users = this.decode(this.readFile(this.usersFile)) || [];
-        const save = (data) => this.writeFile(this.usersFile, 'w+', this.encode(data));
+
         const url = req.url.split('/').splice(2); // query props
         const query = {id: url[0] ? Number(url[0]) : null, ...req.body};
         const response = {
@@ -55,15 +62,43 @@ class Server {
             data: null,
             error: null,
         };
+
+        const save = (data) => {
+            if (!this.writeFile(this.usersFile, 'w+', this.encode(data))) {
+                throw 'Данные не обновлены';
+            }
+        };
+        const validate = (data) => {
+            const err = User.validate(data).error;
+            if (err && err.details.length) {
+                throw err.details[0].message;
+            }
+        };
+        const findUser = () => {
+            if (!query.id) {
+                response.code = 500;
+                throw 'Не передан id пользователя';
+            }
+            const tmp = Object.entries(users)
+                .map(e => ({idx: e[0], id: e[1].id}))
+                .find(e => e.id === query.id);
+            if (!tmp) {
+                response.code = 404;
+                throw 'Пользователь не найден';
+            }
+            return {
+                idx: Number(tmp.idx),
+                obj: users[tmp.idx],
+            };
+        };
+
         switch (String(req.method).toLowerCase()) {
             case 'get':
                 if (query.id) {
-                    const user = users.find(e => e.id === query.id);
-                    if (user) {
-                        response.data = user;
-                    } else {
-                        response.code = 404;
-                        response.error = 'Пользователь не найден';
+                    try {
+                        response.data = findUser().obj;
+                    } catch (err) {
+                        response.error = err;
                     }
                 } else {
                     response.data = users;
@@ -71,56 +106,38 @@ class Server {
                 break;
             case 'post':
                 query.id = users.length ? users[users.length - 1].id + 1 : 1;
-                users.push(query);
-                if (save(users)) {
+                try {
+                    validate(query);
+                    users.push(query);
+                    save(users);
                     response.data = 'Пользователь добавлен';
-                } else {
-                    response.error = 'Пользователь не добавлен';
+                } catch (err) {
+                    response.error = err;
                 }
                 break;
             case 'put':
-                if (query.id) {
-                    const user = users.find(e => e.id === query.id);
-                    if (user) {
-                        Object.entries(query).forEach(e => user[e[0]] = e[1]);
-                        if (save(users)) {
-                            response.data = 'Пользователь обновлен';
-                        } else {
-                            response.error = 'Пользователь не обновлен';
-                        }
-                    } else {
-                        response.code = 404;
-                        response.error = 'Пользователь не найден';
-                    }
-                } else {
-                    response.code = 500;
-                    response.error = 'Не передан id пользователя';
+                try {
+                    const user = findUser().obj;
+                    Object.entries(query).forEach(e => user[e[0]] = e[1]);
+                    validate(user);
+                    save(users);
+                    response.data = 'Пользователь обновлен';
+                } catch (err) {
+                    response.error = err;
                 }
                 break;
             case 'delete':
-                if (query.id) {
-                    const user = Object.entries(users)
-                        .map(e => ({idx: e[0], id: e[1].id}))
-                        .find(e => e.id === query.id);
-                    if (user) {
-                        users.splice(Number(user.idx), 1);
-                        if (save(users)) {
-                            response.data = 'Пользователь удален';
-                        } else {
-                            response.error = 'Пользователь не удален';
-                        }
-                    } else {
-                        response.code = 404;
-                        response.error = 'Пользователь не найден';
-                    }
-                } else {
-                    response.code = 500;
-                    response.error = 'Не передан id пользователя';
+                try {
+                    users.splice(findUser().idx, 1);
+                    save(users);
+                    response.data = 'Пользователь удален';
+                } catch (err) {
+                    response.error = err;
                 }
                 break;
         }
         res.writeHead(response.code, {'Content-Type': `application/json; charset=utf-8`});
-        res.end(this.encode(response));
+        res.end(this.encode({data: response.data, error: response.error}));
     }
 }
 

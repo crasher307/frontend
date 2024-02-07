@@ -3,15 +3,5 @@
         "id": 1,
         "username": "testUser",
         "password": "newPassword"
-    },
-    {
-        "id": 2,
-        "username": "testUser",
-        "password": "qwerty"
-    },
-    {
-        "id": 4,
-        "username": "testUser",
-        "password": "qwerty"
     }
 ]
