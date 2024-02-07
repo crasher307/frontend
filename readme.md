@@ -500,8 +500,19 @@
 </details>
 
 </details>
+<details class="block" data-block="Основы Node.js">
+<summary>Основы Node.js</summary>
 
-###### Основы Node.js
+- Урок 1. Лекция. Введение в Node.js
+- [Урок 1. Семинар. Введение в Node.js](node_js/lesson_1)
+- Урок 2. Лекция. Введение в NPM
+- [Урок 2. Семинар. Введение в NPM](node_js/lesson_2)
+- Урок 3. Лекция. Модули и фреймворк Express (WIP)
+- [Урок 3. Семинар. Модули и фреймворк Express (WIP)](node_js/lesson_3)
+- Урок 4. Лекция. Написание API с применением подхода REST
+- [Урок 4. Семинар. Создание REST API с Express](node_js/lesson_4)
+
+</details>
 
 ###### Продвинутый JavaScript
 
