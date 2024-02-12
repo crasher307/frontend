@@ -25,7 +25,7 @@ class Library {
     hasBook(title) {
         return this.#books.includes(title);
     }
-    allBooks() {
+    get allBooks() {
         return this.#books;
     }
 }
@@ -33,14 +33,14 @@ class Library {
 const lib = new Library(['test1', 'test2', 'test3']);
 
 const fn = {
-    listStart: () => [...lib.allBooks()],
+    listStart: () => [...lib.allBooks],
     addError: () => lib.addBook('test1'),
     addOk: () => lib.addBook('test4'),
     removeError: () => lib.removeBook('test5'),
     removeOk: () => lib.removeBook('test4'),
     hasError: () => lib.hasBook('test5'),
     hasOk: () => lib.hasBook('test1'),
-    listEnd: () => [...lib.allBooks()],
+    listEnd: () => [...lib.allBooks],
 };
 
 const result = {};
