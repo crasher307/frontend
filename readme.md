@@ -513,8 +513,17 @@
 - [Урок 4. Семинар. Создание REST API с Express](node_js/lesson_4)
 
 </details>
+<details class="block" data-block="Продвинутый JavaScript">
+<summary>Продвинутый JavaScript</summary>
 
-###### Продвинутый JavaScript
+- Урок 1. Лекция. Коллекции и итераторы. Модули
+- [Урок 1. Семинар. Коллекции и итераторы. Модули](javascript_advanced/lesson_1)
+- Урок 2. Лекция. Продвинутая работа с функциями и классами
+- [Урок 2. Семинар. Продвинутая работа с функциями и классами](javascript_advanced/lesson_2)
+- Урок 3. Лекция. Промисы. Хранилище
+- [Урок 3. Семинар. Промисы. Хранилище](javascript_advanced/lesson_3)
+
+</details>
 
 ###### JavaScript про API браузеров
 
