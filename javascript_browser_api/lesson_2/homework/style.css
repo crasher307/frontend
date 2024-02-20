@@ -24,9 +24,12 @@ body {
   max-width: 600px;
   width: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 .slider .hide {
-  display: none !important;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
 }
 .slider, .slider .images, .slider .prev, .slider .next, .slider .pointers {
   display: flex;
@@ -86,6 +89,7 @@ body {
   width: inherit;
 }
 .slider .images img {
+  transition: all 0.4s ease-in;
   width: inherit;
 }
 
