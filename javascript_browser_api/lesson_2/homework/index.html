@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="slider">
+    <div class="prev"></div>
+    <div class="next"></div>
+    <div class="images">
+        <img src="./images/kickstarter_234x60.png" alt="">
+        <img src="./images/linkedin_234x60.png" alt="">
+        <img src="./images/skype_234x60.png" alt="">
+        <img src="./images/steam_234x60.png" alt="">
+        <img src="./images/telegram_234x60.png" alt="">
+        <img src="./images/tumblr_234x60.png" alt="">
+        <img src="./images/twitter_234x60.png" alt="">
+        <img src="./images/vk_234x60.png" alt="">
+        <img src="./images/youtube_234x60.png" alt="">
+    </div>
+    <div class="pointers"></div>
+</div>
+
+<script defer>
+    'use strict';
+
+    const timer = {
+        start: null,
+        change: null,
+    };
+    const sliderEl = document.querySelector('.slider');
+    const images = Array.from(sliderEl.querySelectorAll('.images img'));
+    const pointersEl = sliderEl.querySelector('.pointers');
+    const pointers = [];
+
+    // start
+    images.forEach(e => e.classList.add('hide'));
+    images.forEach((e, idx) => {
+        const el = document.createElement('div');
+        el.classList.add('point');
+        el.dataset.id = idx;
+        pointers.push(el);
+        pointersEl.appendChild(el);
+    });
+    setSlide(0);
+    start();
+
+    // handler
+    sliderEl.addEventListener('click', ({target}) => {
+        !target.matches('.prev') || click('prev');
+        !target.matches('.next') || click('next');
+        !target.matches('.point') || click('point', target.dataset.id);
+    });
+
+    // functions
+    function getCurrentIdx() {
+        return images.findIndex(e => !e.classList.contains('hide'));
+    }
+
+    function setSlide(idx) {
+        const currenIdx = getCurrentIdx();
+        let nextIdx = idx;
+        if (nextIdx < 0) {
+            nextIdx = images.length - 1;
+        } else if (nextIdx >= images.length) {
+            nextIdx = 0;
+        }
+        // hide
+        if (currenIdx >= 0) {
+            images[currenIdx].classList.add('hide');
+            pointers[currenIdx].classList.remove('active');
+        }
+        // view
+        images[nextIdx].classList.remove('hide');
+        pointers[nextIdx].classList.add('active');
+    }
+
+    function click(type, idx = null) {
+        switch (type) {
+            case 'prev':
+                setSlide(getCurrentIdx() - 1);
+                break;
+            case 'next':
+                setSlide(getCurrentIdx() + 1);
+                break;
+            case 'point':
+                setSlide(Number(idx));
+                break;
+        }
+        start(5000);
+    }
+
+    function start(time = 100, period = 2000) {
+        clearTimeout(timer.start);
+        clearInterval(timer.change);
+        timer.start = setTimeout(() => {
+            timer.change = setInterval(() => {
+                setSlide(getCurrentIdx() + 1);
+            }, period);
+        }, time);
+    }
+</script>
+
+</body>
+</html>
