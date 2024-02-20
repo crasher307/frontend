@@ -1,5 +1,5 @@
-
 'use strict';
+
 const currentUser = prompt('Введите свое имя', 'username');
 const lessonsRaw = JSON.stringify([
     {
@@ -122,7 +122,8 @@ function cancel(id) {
 function lessonsUpdateDOM() {
     localStorage.setItem('lessons', JSON.stringify(lessons)); // save
     // update DOM
-    scheduleBlock.querySelectorAll('div').forEach(e => e.remove());
+    scheduleBlock.innerHTML = '';
+    // scheduleBlock.querySelectorAll('div').forEach(e => e.remove());
     addLine();
     lessons.forEach(data => addLine(data));
 }
