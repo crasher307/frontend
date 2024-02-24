@@ -524,8 +524,17 @@
 - [Урок 3. Семинар. Промисы. Хранилище](javascript_advanced/lesson_3)
 
 </details>
+<details class="block" data-block="JavaScript про API браузеров">
+<summary>JavaScript про API браузеров</summary>
 
-###### JavaScript про API браузеров
+- Урок 1. Лекция. Dom-дерево
+- [Урок 1. Семинар. Dom-дерево](javascript_browser_api/lesson_1)
+- Урок 2. Лекция. События, формы
+- [Урок 2. Семинар. События, формы](javascript_browser_api/lesson_2)
+- Урок 3. Лекция. Сетевые запросы
+- [Урок 3. Семинар. Сетевые запросы](javascript_browser_api/lesson_3)
+
+</details>
 
 ###### Фреймворк Vue.js
 
