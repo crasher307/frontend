@@ -1,0 +1,107 @@
+@import "vars", "clear", "mixins";
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: #292F36;
+}
+
+body #app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  //& > * {
+  //  border: 1px solid #f0f;
+  //}
+}
+
+header, main, footer {
+  padding: 0 max($min-padding, calc((100vw - $size-lg) / 2));
+}
+
+header {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  nav {
+    @include text(20px, $baseColor);
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+  }
+}
+
+main {
+  //
+}
+
+footer {
+  margin-top: auto;
+
+  // REFACTOR
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 95px;
+  padding-bottom: 135px;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    & p {
+      @include text();
+    }
+
+    &_social {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 100px;
+
+    & h5 {
+      font-family: $dm;
+      font-size: 25px;
+      font-weight: 400;
+      color: $baseColor;
+    }
+
+    & a {
+      @include text();
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 100px;
+
+    & h5 {
+      font-family: $dm;
+      font-size: 25px;
+      font-weight: 400;
+      color: $baseColor;
+    }
+
+    & a, p {
+      @include text();
+    }
+  }
+}

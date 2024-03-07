@@ -1,0 +1,178 @@
+/* <!-- <editor-folder Colors> --> */
+/* <!-- </editor-folder--> */
+/* <!-- <editor-folder Sizes> --> */
+/* <!-- </editor-folder--> */
+/* <!-- <editor-folder LocalUse> --> */
+/* <!-- </editor-folder--> */
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, img, a, hr, table, tr, td, h1, h2, h3, h4, h5, h6, input, select, textarea, button {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  outline: none;
+  vertical-align: top;
+}
+
+::selection {
+  background: #69d;
+  color: #fff;
+}
+
+::placeholder {
+  color: #222;
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+}
+
+/*
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: left;
+  background: #fff;
+  color: #333;
+}
+
+a {
+  transition: all 0.2s ease-in-out;
+  color: #49e;
+  text-decoration: none;
+  cursor: pointer !important;
+
+  &:is(:hover, :focus) {
+    color: #27c;
+  }
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+input {
+  @include inputFields;
+
+  &[type=button], &[type=submit], &[type=reset] {
+    @include inputFields(true);
+  }
+}
+
+button {
+  @include inputFields(true);
+}
+
+select, textarea {
+  @include inputFields(false, 4px 6px);
+}
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: #292F36;
+}
+
+body #app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+header, main, footer {
+  padding: 0 max(20px, (100vw - 1200px) / 2);
+}
+
+header {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav {
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #292f36;
+  display: flex;
+  justify-content: end;
+  gap: 50px;
+}
+
+footer {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 95px;
+  padding-bottom: 135px;
+}
+footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+footer__left p {
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #4d5053;
+}
+footer__left_social {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+footer__center {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 100px;
+}
+footer__center h5 {
+  font-family: "DM Serif Display", serif;
+  font-size: 25px;
+  font-weight: 400;
+  color: #292f36;
+}
+footer__center a {
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #4d5053;
+}
+footer__right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 100px;
+}
+footer__right h5 {
+  font-family: "DM Serif Display", serif;
+  font-size: 25px;
+  font-weight: 400;
+  color: #292f36;
+}
+footer__right a, footer__right p {
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #4d5053;
+}
+
+/*# sourceMappingURL=style.css.map */
