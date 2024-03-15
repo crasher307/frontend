@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <header-block class="header-block" title="Our Project" desc="Home / Project" background="/images/project/Header.png"/>
+    <header-block class="header-block" title="Our Project" desc="Home / Project"
+                  background="/images/project/Header.png"/>
     <div class="page-block">
       <div class="sort">
         <div
@@ -17,32 +18,30 @@
         <div class="left">
           <page-project-item
               class="item"
-              v-for="(item, idx) in itemsData"
+              v-for="(item, idx) in itemsData.left"
               :key="idx"
               :title="item.title"
               :desc="item.desc"
               :image="item.image"
-              v-show="idx % 2 === 0"
           />
         </div>
         <div class="right">
           <page-project-item
               class="item"
-              v-for="(item, idx) in itemsData"
+              v-for="(item, idx) in itemsData.right"
               :key="idx"
               :title="item.title"
               :desc="item.desc"
               :image="item.image"
-              v-show="idx % 2 !== 0"
           />
         </div>
       </div>
       <div class="pages">
-        <!--        <div class="page prev" v-if="currentPage > 1"></div>-->
-        <!--        <div class="page" :class="{'active': idx === currentPage}" v-for="idx in pages" :key="idx">-->
-        <!--          {{ String(idx).padStart(2, '0') }}-->
-        <!--        </div>-->
-        <!--        <div class="page next" v-if="currentPage < pages"></div>-->
+        <div class="page prev" v-if="currentPage > 1"></div>
+        <div class="page" :class="{'active': idx === currentPage}" v-for="idx in pages" :key="idx">
+          {{ String(idx).padStart(2, '0') }}
+        </div>
+        <div class="page next" v-if="currentPage < pages"></div>
       </div>
     </div>
   </div>
@@ -62,12 +61,14 @@ export default {
   data() {
     return {
       selectedCategory: '',
+      currentPage: 1,
+      pages: 3,
       items: [
         {
           category: 'Bathroom',
           image: '/images/project/Image-1.png',
-          title: '-',
-          desc: '-',
+          title: 'Test Bathroom',
+          desc: '',
         },
         {
           category: 'Bed Room',
@@ -120,14 +121,14 @@ export default {
         {
           category: 'Kitchan',
           image: '/images/project/Image-2.png',
-          title: '-',
-          desc: '-',
+          title: 'Test Kitchan',
+          desc: '',
         },
         {
           category: 'Living Area',
           image: '/images/project/Image-3.png',
-          title: '-',
-          desc: '-',
+          title: 'Test Living Area',
+          desc: '',
         },
       ],
     };
@@ -137,7 +138,14 @@ export default {
       return Array.from(new Set(this.items.map(e => e.category)));
     },
     itemsData() {
-      return this.items.filter(e => e.category === this.selectedCategory);
+      const data = {
+        left: [],
+        right: [],
+      };
+      this.items.filter(e => e.category === this.selectedCategory).forEach((val, idx) => {
+        idx % 2 === 0 ? data.left.push(val) : data.right.push(val);
+      });
+      return data;
     },
   },
   watch: {
@@ -157,41 +165,75 @@ export default {
 .container {
   gap: 150px;
 }
+
 .header-block, .page-block {
   margin-bottom: 50px;
 }
-.sort {
-  @include flexRow(center, center, 10px);
-  margin: 0 auto -100px;
-  padding: 0;
-  border: 2px solid $color-fourth;
-  border-radius: 18px;
-  overflow: hidden;
 
-  .item {
-    @include flexRow(center, center);
-    @include textTitle(18px, 600);
-    font-family: $font-second;
-    padding: 20px;
-    cursor: pointer;
-    border-radius: 14px;
+.page-block {
+  @include flexColumn(center, start, 60px);
 
-    &.active {
-      background: $color-fourth;
-      color: $color-clear;
+  .sort {
+    @include flexRow(center, center, 10px);
+    border: 2px solid $color-fourth;
+    border-radius: 18px;
+
+    .item {
+      @include flexRow(center, center);
+      @include textTitle(18px, 600);
+      font-family: $font-second;
+      padding: 20px;
+      cursor: pointer;
+      border-radius: 14px;
+
+      &.active {
+        background: $color-fourth;
+        color: $color-clear;
+      }
     }
   }
-}
-.items {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  //@include flexRow(space-between, stretch, 30px);
-  //@include flexRow();
-  //flex-wrap: nowrap;
 
-  & > * {
-    @include flexColumn(stretch, start, 30px);
-    //width: calc(50% - 15px);
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    & > * {
+      @include flexColumn(stretch, start, 30px);
+    }
+  }
+
+  .pages {
+    @include flexRow(center, center, 20px);
+
+    .page {
+      @include flexRow(center, center);
+      @include textDesc(16px, 500);
+      border-radius: 50%;
+      border: 1px solid $color-fourth;
+      width: 52px;
+      height: 52px;
+      overflow: hidden;
+      cursor: pointer;
+
+      &.active {
+        background: $color-third;
+        border-color: $color-third;
+      }
+
+      &.prev:before,
+      &.next:before {
+        @include flexRow(center, center);
+        background: url('@/assets/icons/Arrow.svg') no-repeat center;
+        width: 100%;
+        height: 100%;
+        content: '';
+      }
+
+      &.prev:before {
+        transform: rotate(180deg);
+      }
+    }
   }
 }
 </style>

@@ -5,8 +5,8 @@
     </div>
     <div class="data">
       <div class="info">
-        <div class="title">{{ title }}</div>
-        <div class="desc">{{ desc }}</div>
+        <div class="title" v-if="title">{{ title }}</div>
+        <div class="desc" v-if="desc">{{ desc }}</div>
       </div>
       <div class="button" @click="submit()" v-if="button"></div>
     </div>
