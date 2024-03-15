@@ -34,6 +34,17 @@ $pd-tablet: max($min-padding, calc((100vw - $size-md) / 2));
 $pd-mobile: max($min-padding, calc((100vw - $size-xs) / 2));
 /* <!-- </editor-folder--> */
 
-$dm: "DM Serif Display", serif;
-$jost: "Jost", sans-serif;
-$baseColor: #292f36;
+/* <!-- <editor-folder Fonts> --> */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font-main: "DM Serif Display", serif;
+$font-second: "Jost", sans-serif;
+/* <!-- </editor-folder--> */
+
+/* <!-- <editor-folder SiteColors> --> */
+$color-clear: #FFFFFF;
+$color-main: #292f36;
+$color-second: #4D5053;
+$color-third: #F4F0EC;
+$color-fourth: #CDA274;
+/* <!-- </editor-folder--> */

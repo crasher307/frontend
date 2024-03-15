@@ -1,6 +1,8 @@
 <template>
-  <div>
-    Project page
+  <div class="container">
+    <div>
+      Project page
+    </div>
   </div>
 </template>
 

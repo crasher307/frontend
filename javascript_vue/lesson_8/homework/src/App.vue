@@ -1,30 +1,20 @@
 <template>
   <div id="app">
-    <c-header>
-      <nav class="menu">
-        <a class="link" :class="{'active': currentPage === idx}"
-           v-for="(item, idx) in pages" :key="idx"
-           @click.prevent="currentPage = item.comp"
-           :href="`#${idx}`"
-        >
-          {{ item.name }}
-        </a>
-      </nav>
-    </c-header>
+    <c-header :pages="pages" :currentPage="currentPage" @changePage="currentPage = $event"/>
     <c-main>
       <component :is="currentPage"/>
     </c-main>
-    <c-footer/>
+    <c-footer :pages="pages" :currentPage="currentPage" @changePage="currentPage = $event"/>
   </div>
 </template>
 
 <script>
 import CHeader from "@/components/CHeader.vue";
+import CMain from "@/components/CMain.vue";
 import CFooter from "@/components/CFooter.vue";
 import PageHome from "@/components/pages/PageHome.vue";
 import PageProject from "@/components/pages/PageProject.vue";
 import PageBlog from "@/components/pages/PageBlog.vue";
-import CMain from "@/components/CMain.vue";
 
 export default {
   name: 'App',
@@ -43,21 +33,7 @@ export default {
       },
     };
   },
-  computed: {},
-  watch: {},
-  methods: {},
-  mounted() {}
 }
 </script>
 
-<style lang="scss" src="./styles/style.scss"></style>
-<style lang="scss" scoped>
-#app {
-  //font-family: Avenir, Helvetica, Arial, sans-serif;
-  //-webkit-font-smoothing: antialiased;
-  //-moz-osx-font-smoothing: grayscale;
-  //text-align: center;
-  //color: #2c3e50;
-  //margin-top: 60px;
-}
-</style>
+<style lang="scss" src="@/styles/style.scss"/>
